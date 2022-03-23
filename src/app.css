@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply text-black border-black;
+  }
+
+  a {
+    @apply leading-none cursor-pointer;
+    /* @apply underline; */
+
+    &:hover {
+      @apply text-secondary-light;
+    }
+  }
+
+  span {
+    @apply leading-none;
+  }
+
+  p {
+    @apply font-sans mb-4;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-sans font-bold;
+  }
+  h1 {
+    @apply md:text-h1;
+
+    &.super {
+      @apply md:text-h1-super text-h3;
+    }
+  }
+  h2 {
+    @apply text-h2 mb-4;
+  }
+  h3 {
+    @apply text-h3;
+  }
+  h4 {
+    @apply text-h4;
+  }
+
+  .body {
+    @apply md:max-w-5xl mx-4 md:mx-auto my-8 md:p-8 flex-grow relative block;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-block px-6 py-3 border-1 rounded-5 bg-primary-light shadow-block-2 font-semibold leading-none text-center text-black min-w-[100px];
+    &:hover {
+      @apply shadow-none translate-x-[-2px] translate-y-[2px] text-black;
+    }
+
+    &.dark {
+      @apply bg-primary-dark text-white;
+    }
+
+    &.black {
+      @apply bg-black text-white border-white;
+    }
+
+    &.large {
+      @apply shadow-block-3 text-button-lg px-10 py-4 min-w-[160px];
+      &:hover {
+        @apply shadow-none translate-x-[-3px] translate-y-[3px];
+      }
+    }
+  }
+
+  .card {
+    @apply shadow-blur p-8 block bg-white max-w-sm relative;
+  }
+}
+
+@layer utilities {
+  .text-shadow-2 {
+    text-shadow: -2px 2px 0px theme('colors.black');
+  }
+  .text-shadow-3 {
+    text-shadow: -3px 3px 0px theme('colors.black');
+  }
+  .text-shadow-5 {
+    text-shadow: -5px 5px 0px theme('colors.black');
+  }
+}
