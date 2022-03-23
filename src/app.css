@@ -52,6 +52,14 @@
   .body {
     @apply md:w-full md:max-w-5xl mx-4 md:mx-auto my-8 md:p-8 flex-grow relative block;
   }
+
+  label {
+    @apply flex flex-col text-xl font-semibold;
+  }
+
+  input {
+    @apply bg-secondary-light border-1 border-secondary-dark shadow-block-2 rounded px-4 py-2 mt-2 text-base mb-5;
+  }
 }
 
 @layer components {

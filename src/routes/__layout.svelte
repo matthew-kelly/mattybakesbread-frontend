@@ -4,7 +4,7 @@
   import '../app.css';
 </script>
 
-<div class="min-h-screen flex flex-col bg-page-background">
+<div class="min-h-screen flex flex-col bg-page-background overflow-x-clip">
   <Header />
   <div class="body">
     <slot />
