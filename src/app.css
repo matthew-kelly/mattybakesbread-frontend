@@ -92,4 +92,22 @@
   .text-shadow-5 {
     text-shadow: -5px 5px 0px theme('colors.black');
   }
+
+  .canvas-container {
+    position: absolute;
+    height: 500px;
+    width: 500px;
+    top: -130px;
+    right: 50%;
+    transform: translateX(50%);
+    z-index: 0;
+
+    &.desktop {
+      height: 1000px;
+      width: 1000px;
+      top: -284px;
+      right: -328px;
+      transform: none;
+    }
+  }
 }

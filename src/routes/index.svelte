@@ -1,9 +1,11 @@
 <script>
+  import Model3D from '../lib/Model3D.svelte';
+
   export const prerender = true;
   // TODO: prerender? will that allow cart to update?
 </script>
 
-<div>
+<div class="relative z-10 mt-20 md:mt-0">
   <h1 class="super text-white text-center md:text-left text-shadow-3 md:text-shadow-5 mb-1">
     Handmade baked goods
   </h1>
@@ -15,7 +17,6 @@
     <a class="btn md:large black mr-12 md:mr-16" href="/shop">Shop</a>
     <a class="btn md:large black" href="/content">Content</a>
   </div>
-  <!-- TODO: 3D bread -->
 
   <div
     class="flex md:justify-between items-center md:items-start flex-col md:flex-row mt-16 md:mt-32 mb-4 md:mb-0"
@@ -35,3 +36,6 @@
     </div>
   </div>
 </div>
+
+<!-- TODO: 3D bread -->
+<Model3D item="loaf" />

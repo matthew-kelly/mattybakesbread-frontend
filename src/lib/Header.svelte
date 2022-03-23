@@ -1,4 +1,4 @@
-<header>
+<header class="z-10">
   <nav class="flex justify-between items-center bg-black px-8 py-5 md:p-8 md:bg-inherit">
     <a
       href="/"
