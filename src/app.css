@@ -50,13 +50,13 @@
   }
 
   .body {
-    @apply md:max-w-5xl mx-4 md:mx-auto my-8 md:p-8 flex-grow relative block;
+    @apply md:w-full md:max-w-5xl mx-4 md:mx-auto my-8 md:p-8 flex-grow relative block;
   }
 }
 
 @layer components {
   .btn {
-    @apply inline-block px-6 py-3 border-1 rounded-5 bg-primary-light shadow-block-2 font-semibold leading-none text-center text-black min-w-[100px];
+    @apply inline-block px-6 py-3 border-1 rounded-5 bg-primary-light shadow-block-2 font-semibold leading-none text-center text-black;
     &:hover {
       @apply shadow-none translate-x-[-2px] translate-y-[2px] text-black;
     }
@@ -78,7 +78,7 @@
   }
 
   .card {
-    @apply shadow-blur p-8 block bg-white max-w-sm relative;
+    @apply shadow-blur p-8 block bg-white md:max-w-sm relative;
   }
 }
 
