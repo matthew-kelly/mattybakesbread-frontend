@@ -2,18 +2,28 @@
   import { onMount } from 'svelte';
 
   import * as SC from 'svelte-cubed';
-  import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+  import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
   // const models = ['cake', 'cakeBirthday', 'croissant', 'loaf']; // 'donutSprinkles', 'pie', 'pizza'
   // const item = models[Math.floor(Math.random() * models.length)];
   export let item = 'loaf';
-  let path = `/static/models/${item}.glb`;
+  let path = `/models/${item}.glb`;
   let loader = new GLTFLoader();
   let scene;
   onMount(() => {
-    loader.load(path, (gltf) => {
-      scene = gltf.scene.children[0];
-    });
+    loader.load(
+      path,
+      (gltf) => {
+        scene = gltf.scene.children[0];
+      },
+      (xhr) => {
+        console.log('loading...', xhr);
+      },
+      (error) => {
+        // called when loading has errors
+        console.error('An error happened', error);
+      }
+    );
     // TODO: cover site with loading screen until model renders?
   });
 
