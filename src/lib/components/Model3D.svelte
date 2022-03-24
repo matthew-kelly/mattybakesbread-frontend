@@ -24,7 +24,7 @@
         console.error('An error happened', error);
       }
     );
-    // TODO: cover site with loading screen until model renders?
+    // TODO: cover site with loading screen until model renders? or placeholder bread image?
   });
 
   let rotation = 0;

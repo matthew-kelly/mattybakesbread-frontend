@@ -50,7 +50,7 @@
   }
 
   .body {
-    @apply md:w-full md:max-w-5xl mx-4 md:mx-auto my-8 md:p-8 flex-grow relative block;
+    @apply md:w-full md:max-w-5xl mx-4 md:mx-auto my-8 md:mt-0 md:p-8 flex-grow relative block;
   }
 
   label {

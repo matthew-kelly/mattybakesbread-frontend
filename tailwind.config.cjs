@@ -4,8 +4,8 @@ module.exports = {
     extend: {
       backgroundImage: {
         'page-background': `url('./static/mattybakesbread_background.svg')`,
-				'menu-open': `url('./static/hamburger.svg')`,
-				'menu-close': `url('./static/times.svg')`
+        'menu-open': `url('./static/hamburger.svg')`,
+        'menu-close': `url('./static/times.svg')`,
       },
       borderRadius: {
         5: '5px',
@@ -22,8 +22,8 @@ module.exports = {
       colors: {
         'primary-light': '#E8BB93',
         'primary-dark': '#784F2C',
-        'secondary-light': '#C5F4E0', // TODO: make secondary color pink
-        'secondary-dark': '#769588', // TODO: make secondary color pink
+        'secondary-light': '#C5F4E0', // TODO: make secondary color pink? or add link color?
+        'secondary-dark': '#769588', // TODO: make secondary color pink? or add link color?
         accent: '#19381F',
         black: '#222222',
         white: '#FFFFFF',
@@ -36,7 +36,7 @@ module.exports = {
         h4: ['1.5rem', '2rem'],
         h5: ['1.25rem', '1.5rem'],
         'button-lg': ['28px', '28px'],
-				'mobile-nav-logo': ['24px', '21px']
+        'mobile-nav-logo': ['24px', '21px'],
       },
     },
     fontFamily: {
