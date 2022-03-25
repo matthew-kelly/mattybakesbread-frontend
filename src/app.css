@@ -6,7 +6,7 @@
 
 @layer base {
   * {
-    @apply text-black border-black;
+    @apply text-black border-black z-0;
   }
 
   a {
@@ -15,6 +15,10 @@
 
     &:hover {
       @apply text-secondary-light;
+    }
+
+    &.disabled {
+      @apply pointer-events-none text-secondary-dark;
     }
   }
 
@@ -117,5 +121,11 @@
       right: -328px;
       transform: none;
     }
+  }
+
+  .noscroll {
+    position: fixed;
+    overflow-y: clip;
+    width: 100%;
   }
 }

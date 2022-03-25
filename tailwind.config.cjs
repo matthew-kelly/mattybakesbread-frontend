@@ -36,7 +36,7 @@ module.exports = {
         h4: ['1.5rem', '2rem'],
         h5: ['1.25rem', '1.5rem'],
         'button-lg': ['28px', '28px'],
-        'mobile-nav-logo': ['24px', '21px'],
+        'mobile-nav-logo': ['20px', '16px'],
       },
     },
     fontFamily: {
