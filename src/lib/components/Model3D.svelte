@@ -37,6 +37,8 @@
   <SC.Canvas antialias alpha>
     <SC.Primitive object={scene} position={[0, 0, 0]} rotation={[0, rotation, 0]} />
     <SC.PerspectiveCamera position={[1, 1, -2]} />
-    <SC.DirectionalLight intensity={3} position={[7, 3, -7]} />
+    <!-- <SC.DirectionalLight intensity={3} position={[7, 3, -7]} /> -->
+    <SC.DirectionalLight intensity={2.5} position={[7, 3, -7]} />
+    <SC.SpotLight intensity={0.75} position={[10, 5, -7]} />
   </SC.Canvas>
 </div>
