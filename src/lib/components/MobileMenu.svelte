@@ -18,12 +18,13 @@
       <a
         href={item.path}
         class="{$page.url.pathname === item.path ? 'disabled' : ''} font-semibold text-h3 text-white mb-6"
-        >{item.title}</a
       >
+        {item.title}
+      </a>
     {/each}
     <!-- TODO: live cart value -->
-    <a href="/cart" class="{$page.url.pathname === '/cart' ? 'disabled' : ''} font-semibold text-h3 text-white mb-6"
-      >Cart</a
-    >
+    <a href="/cart" class="{$page.url.pathname === '/cart' ? 'disabled' : ''} font-semibold text-h3 text-white mb-6">
+      Cart
+    </a>
   </nav>
 {/if}

@@ -74,9 +74,9 @@
 <div>
   <h1 class="text-h3 md:text-h1 md:super text-white text-shadow-3 md:text-shadow-5 mb-2 ml-4 md:ml-8">Orders</h1>
   <p class="font-semibold mb-4 ml-4 md:ml-8">Check the status of your order.</p>
-  <div class="bg-white p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+  <div class="bg-white p-4 md:py-16 grid grid-cols-1 gap-4 items-center justify-center">
     {#if !orderResponse}
-      <div class="flex-grow mb-2">
+      <div class="mb-2 md:max-w-2xl md:w-full md:mx-auto">
         <label>
           Order Number
           <input type="text" name="order-number" placeholder="Your order number" bind:value={orderNumber} />
@@ -84,7 +84,7 @@
 
         <label>
           Confirmation Code
-          <input type="text" name="text" placeholder="ABC123" bind:value={orderCode} />
+          <input type="text" name="text" placeholder="Check your email" bind:value={orderCode} />
         </label>
 
         <button class="btn" disabled={!(orderNumber && orderCode)} type="button" on:click={handleSubmit}>
@@ -97,7 +97,7 @@
       <p>...loading</p>
     {:then order}
       {#if order}
-        <div class="flex-grow">
+        <div class="md:max-w-2xl md:w-full md:mx-auto">
           <h4 class="mb-2">Order #{order.id}</h4>
           <p class="mb-1"><span class="font-semibold">Ordered By: </span>{order.name}</p>
           <p class="mb-1 mt-4 font-semibold">Items:</p>

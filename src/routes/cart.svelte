@@ -50,6 +50,7 @@
 <script>
   import formatMoney from '$lib/helpers/formatMoney';
   import { writable } from 'svelte/store';
+  import { flip } from 'svelte/animate';
   import CartItem from '../lib/components/CartItem.svelte';
 
   export let cart;
@@ -81,35 +82,41 @@
 <div class="flex flex-col">
   <h1 class="text-h3 md:text-h1 md:super text-white text-shadow-3 md:text-shadow-5 mb-2 ml-4 md:ml-8">Cart</h1>
   <p class="font-semibold mb-4 ml-4 md:ml-8">Buy something, will ya?</p>
-  <div class="bg-white md:shadow-blur p-4 flex flex-col justify-between absolute md:static inset-0 top-[88px]">
+  <div
+    class="bg-white md:shadow-blur p-4 flex flex-col justify-between absolute md:static inset-0 top-[88px] md:min-h-[300px]"
+  >
     {#if !$cartStore.contents.length}
       <p class="text-center font-semibold text-h5 mt-4">Your cart is empty</p>
     {:else}
       <p class="text-gray-400 text-center text-xs grow-0">Swipe to remove item</p>
     {/if}
     <div class="flex flex-col gap-4 grow">
-      {#each $cartStore.contents as item, index}
-        <CartItem {item} on:drag-delete={() => removeFromCart(index)}>
-          <div class="flex items-center bg-white pr-1  hover:-translate-x-[53px] transition duration-200 ease-in-out">
-            <!-- <img class="grow-0 mr-1" src={item.image.url} alt={item.name} /> -->
-            <div class="relative w-16 h-0 pt-[64px] bg-gray-400 mr-2" />
-            <div class="grow flex justify-between items-center">
-              <p class="m-0 mr-2">
-                {item.name}
-                {#if item.quantity > 1}
-                  &times;{item.quantity}
-                {/if}
-              </p>
-              <p class="m-0">{formatMoney(item.price * item.quantity)}</p>
+      {#each $cartStore.contents as item, index (item.id)}
+        <div animate:flip={{ duration: 200 }}>
+          <CartItem {item} on:drag-delete={() => removeFromCart(index)}>
+            <div
+              class="flex items-center bg-white pr-1  hover:-translate-x-[53px] transition duration-200 ease-in-out md:p-2"
+            >
+              <!-- <img class="grow-0 mr-1" src={item.image.url} alt={item.name} /> -->
+              <div class="relative w-16 h-0 pt-[64px] bg-gray-400 mr-2" />
+              <div class="grow flex justify-between items-center">
+                <p class="m-0 mr-2">
+                  {item.name}
+                  {#if item.quantity > 1}
+                    &times;{item.quantity}
+                  {/if}
+                </p>
+                <p class="m-0 text-lg font-semibold">{formatMoney(item.price * item.quantity)}</p>
+              </div>
             </div>
-          </div>
-        </CartItem>
+          </CartItem>
+        </div>
       {/each}
     </div>
     <div class="mt-8 md:flex md:justify-between md:items-center">
       <div class="flex justify-between md:justify-start">
-        <p class="font-semibold m-0 mr-4">Total</p>
-        <p class="font-semibold m-0">{formatMoney($cartStore.total, false)}</p>
+        <p class="font-semibold text-xl m-0 mr-4">Total</p>
+        <p class="font-semibold text-xl m-0">{formatMoney($cartStore.total, false)}</p>
       </div>
       {#if $cartStore.contents.length}
         <a class="btn w-full md:w-auto mt-2 md:mt-0" href="/checkout">Checkout</a>

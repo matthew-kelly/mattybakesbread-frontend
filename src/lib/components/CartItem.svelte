@@ -5,28 +5,41 @@
 
   export let item;
   let xStart;
+  let xCurrent;
+  $: isPastThreshold = xStart - xCurrent > 60;
   const dispatch = createEventDispatcher();
 
   function handleDragStart(event) {
     xStart = event.detail.x;
   }
 
+  function handleDragMove(event) {
+    xCurrent = event.detail.x;
+  }
+
   function handleDragStop(event) {
-    if (xStart - event.detail.x > 80) {
+    if (isPastThreshold) {
+      xCurrent = xStart;
       dispatch('drag-delete', { item });
-    } else {
-      // TODO: bounce cart item to show trash icon
     }
   }
 </script>
 
-<div class="relative" out:fade={{ duration: 100 }}>
-  <div class="relative z-1" use:drag={{ direction: 'x' }} on:dragStart={handleDragStart} on:dragStop={handleDragStop}>
+<div class="relative cursor-pointer" out:fade={{ duration: 100 }}>
+  <div
+    class="relative z-1"
+    use:drag={{ direction: 'x' }}
+    on:dragStart={handleDragStart}
+    on:dragMove={handleDragMove}
+    on:dragStop={handleDragStop}
+  >
     <slot />
   </div>
   {#if item.quantity > 1}
     <div
-      class="bg-gradient-to-r from-white via-orange-400 to-orange-400 p-4 flex items-center justify-end absolute inset-0 right-px -z-10"
+      class="bg-gradient-to-r from-white {isPastThreshold
+        ? 'via-orange-400 to-orange-400'
+        : 'via-orange-200 to-orange-200'} p-4 flex items-center justify-end absolute inset-0 right-px -z-10"
     >
       <svg width="22" height="5" viewBox="0 0 22 5" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -37,7 +50,9 @@
     </div>
   {:else}
     <div
-      class="bg-gradient-to-r from-white via-red-500 to-red-500 p-4 flex items-center justify-end absolute inset-0 right-px -z-10"
+      class="bg-gradient-to-r from-white {isPastThreshold
+        ? 'via-red-500 to-red-500'
+        : 'via-red-200 to-red-200'} p-4 flex items-center justify-end absolute inset-0 right-px -z-10"
     >
       <svg width="22" height="25" viewBox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path

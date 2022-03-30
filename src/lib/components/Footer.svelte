@@ -3,7 +3,8 @@
     <a class="text-mobile-nav-logo md:text-button-lg font-semibold my-3 w-20 md:w-auto" href="/"> Matty Bakes Bread </a>
     <div class="flex justify-between">
       <a class="mx-3 md:mx-8" href="/shop">Shop</a>
-      <a class="mx-3 md:ml-8" href="/content">Content</a>
+      <a class="mx-3 md:mx-8" href="/content">Content</a>
+      <a class="mx-3 md:ml-8" href="/orders">Orders</a>
     </div>
   </div>
   <span
