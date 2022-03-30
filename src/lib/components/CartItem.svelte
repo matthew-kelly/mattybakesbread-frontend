@@ -37,7 +37,7 @@
     </div>
   {:else}
     <div
-      class="bg-gradient-to-r from-white via-red-500 to-red-500 p-4 flex items-center justify-end absolute inset-0 -z-10"
+      class="bg-gradient-to-r from-white via-red-500 to-red-500 p-4 flex items-center justify-end absolute inset-0 right-px -z-10"
     >
       <svg width="22" height="25" viewBox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
