@@ -46,7 +46,7 @@
   <p class="font-semibold mb-4 ml-4 md:ml-8">
     {product.description}
   </p>
-  <div class="flex flex-col bg-white p-4">
+  <div class="flex flex-col bg-white p-4 rounded-5 shadow-blur">
     <!-- TODO: display proper image -->
     <div class="block w-100 h-[300px] bg-gray-400" />
     <!-- end temp image -->

@@ -83,7 +83,7 @@
   <h1 class="text-h3 md:text-h1 md:super text-white text-shadow-3 md:text-shadow-5 mb-2 ml-4 md:ml-8">Cart</h1>
   <p class="font-semibold mb-4 ml-4 md:ml-8">Buy something, will ya?</p>
   <div
-    class="bg-white md:shadow-blur p-4 flex flex-col justify-between absolute md:static inset-0 top-[88px] md:min-h-[300px]"
+    class="bg-white md:shadow-blur p-4 flex flex-col justify-between absolute md:static inset-0 top-[88px] md:min-h-[300px] shadow-blur rounded-5"
   >
     {#if !$cartStore.contents.length}
       <p class="text-center font-semibold text-h5 mt-4">Your cart is empty</p>
@@ -95,7 +95,7 @@
         <div animate:flip={{ duration: 200 }}>
           <CartItem {item} on:drag-delete={() => removeFromCart(index)}>
             <div
-              class="flex items-center bg-white pr-1  hover:-translate-x-[53px] transition duration-200 ease-in-out md:p-2"
+              class="flex items-center bg-white pr-1 hover:bg-gray-100 hover:-translate-x-[53px] transition duration-200 ease-in-out md:p-2"
             >
               <!-- <img class="grow-0 mr-1" src={item.image.url} alt={item.name} /> -->
               <div class="relative w-16 h-0 pt-[64px] bg-gray-400 mr-2" />

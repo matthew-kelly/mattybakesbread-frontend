@@ -94,7 +94,7 @@
   }
 
   .card {
-    @apply shadow-blur p-8 block bg-white md:max-w-sm relative;
+    @apply shadow-blur p-8 block bg-white md:max-w-sm relative rounded-5;
   }
 }
 
