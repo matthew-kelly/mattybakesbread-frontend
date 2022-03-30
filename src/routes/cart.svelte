@@ -80,12 +80,14 @@
 
 <div class="flex flex-col">
   <h1 class="text-h3 md:text-h1 md:super text-white text-shadow-3 md:text-shadow-5 mb-2 ml-4 md:ml-8">Cart</h1>
-  <!-- <p class="font-semibold mb-4 ml-4 md:ml-8">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p> -->
-  <div class="bg-white md:shadow-blur p-4 flex flex-col justify-between absolute md:static inset-0 top-[48px]">
+  <p class="font-semibold mb-4 ml-4 md:ml-8">Buy something, will ya?</p>
+  <div class="bg-white md:shadow-blur p-4 flex flex-col justify-between absolute md:static inset-0 top-[88px]">
     {#if !$cartStore.contents.length}
       <p class="text-center font-semibold text-h5 mt-4">Your cart is empty</p>
+    {:else}
+      <p class="text-gray-400 text-center text-xs grow-0">Swipe to remove item</p>
     {/if}
-    <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-4 grow">
       {#each $cartStore.contents as item, index}
         <CartItem {item} on:drag-delete={() => removeFromCart(index)}>
           <div class="flex items-center bg-white pr-1  hover:-translate-x-[53px] transition duration-200 ease-in-out">

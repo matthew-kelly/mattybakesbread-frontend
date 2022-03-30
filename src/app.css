@@ -73,6 +73,10 @@
       @apply shadow-none translate-x-[-2px] translate-y-[2px] text-black;
     }
 
+    &:disabled {
+      @apply opacity-60 shadow-none translate-x-[-2px] translate-y-[-2px] cursor-not-allowed;
+    }
+
     &.dark {
       @apply bg-primary-dark text-white;
     }
