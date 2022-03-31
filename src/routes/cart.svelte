@@ -95,7 +95,7 @@
         <div animate:flip={{ duration: 200 }}>
           <CartItem {item} on:drag-delete={() => removeFromCart(index)}>
             <div
-              class="flex items-center bg-white pr-1 hover:bg-gray-100 hover:-translate-x-[53px] transition duration-200 ease-in-out md:p-2"
+              class="item flex items-center bg-white pr-1 hover:bg-gray-100 hover:-translate-x-[53px] transition duration-200 ease-in-out md:p-2"
             >
               <!-- <img class="grow-0 mr-1" src={item.image.url} alt={item.name} /> -->
               <div class="relative w-16 h-0 pt-[64px] bg-gray-400 mr-2" />

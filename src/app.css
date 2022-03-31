@@ -132,4 +132,11 @@
     overflow-y: clip;
     width: 100%;
   }
+
+  .item {
+    @apply transition-colors ease-in-out;
+  }
+  .flash > .item {
+    @apply bg-secondary-light !important;
+  }
 }

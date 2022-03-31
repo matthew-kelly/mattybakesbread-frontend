@@ -6,8 +6,12 @@
   export let item;
   let xStart;
   let xCurrent;
-  $: isPastThreshold = xStart - xCurrent > 60;
   const dispatch = createEventDispatcher();
+
+  let windowWidth;
+  $: dragThreshold = windowWidth < 768 ? 100 : 60;
+  $: isPastThreshold = xStart - xCurrent > dragThreshold;
+  $: isUpdating = false;
 
   function handleDragStart(event) {
     xStart = event.detail.x;
@@ -20,14 +24,25 @@
   function handleDragStop(event) {
     if (isPastThreshold) {
       xCurrent = xStart;
+      flash();
       dispatch('drag-delete', { item });
     }
   }
+
+  function flash() {
+    isUpdating = true;
+    setTimeout(() => {
+      isUpdating = false;
+    }, 200);
+  }
 </script>
+
+<svelte:window bind:innerWidth={windowWidth} />
 
 <div class="relative cursor-pointer" out:fade={{ duration: 100 }}>
   <div
     class="relative z-1"
+    class:flash={isUpdating}
     use:drag={{ direction: 'x' }}
     on:dragStart={handleDragStart}
     on:dragMove={handleDragMove}
