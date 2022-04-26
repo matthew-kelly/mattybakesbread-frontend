@@ -1,3 +1,11 @@
+<script context="module">
+  export function load() {
+    return {
+      stuff: { title: 'Orders' },
+    };
+  }
+</script>
+
 <script>
   import { page } from '$app/stores';
   import formatMoney from '$lib/helpers/formatMoney';

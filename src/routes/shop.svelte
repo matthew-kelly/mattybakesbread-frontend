@@ -1,3 +1,11 @@
+<script context="module">
+  export function load() {
+    return {
+      stuff: { title: 'Shop' },
+    };
+  }
+</script>
+
 <script>
   import ProductCard from '../lib/components/ProductCard.svelte';
 </script>

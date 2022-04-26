@@ -19,6 +19,7 @@
         props: {
           product,
         },
+        stuff: { title: product.name },
       };
     } catch (e) {
       // return {

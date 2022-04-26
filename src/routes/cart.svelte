@@ -33,6 +33,7 @@
         props: {
           cart,
         },
+        stuff: { title: 'Cart' },
       };
     } catch (e) {
       // return {
