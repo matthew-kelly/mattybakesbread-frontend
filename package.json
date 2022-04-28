@@ -25,5 +25,9 @@
     "tailwindcss": "^3.0.23",
     "three": "^0.138.3"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "@sanity/client": "^3.3.0",
+    "@sanity/image-url": "^1.0.1"
+  }
 }
