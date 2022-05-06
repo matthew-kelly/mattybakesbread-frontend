@@ -3,6 +3,7 @@
   import { fly } from 'svelte/transition';
   import { page } from '$app/stores';
   import { beforeNavigate } from '$app/navigation';
+  import CartCount from './CartCount.svelte';
 
   export let isOpen = false;
 
@@ -22,9 +23,14 @@
         {item.title}
       </a>
     {/each}
-    <!-- TODO: live cart value -->
     <a href="/cart" class="{$page.url.pathname === '/cart' ? 'disabled' : ''} font-semibold text-h3 text-white mb-6">
-      Cart
+      Cart (<CartCount />)
     </a>
   </nav>
 {/if}
+
+<style>
+  a.disabled {
+    @apply text-secondary-dark;
+  }
+</style>

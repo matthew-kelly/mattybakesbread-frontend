@@ -1,8 +1,8 @@
 <script context="module">
-  import client from '$lib/utils/sanity';
+  import { getProducts } from '$lib/utils/sanity';
 
   export async function load() {
-    const data = await client.fetch(`*[_type == "product"]`);
+    const data = await getProducts();
     return {
       props: { products: data },
       stuff: { title: 'Shop' },

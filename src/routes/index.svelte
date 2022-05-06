@@ -32,5 +32,4 @@
   </div>
 </div>
 
-<!-- TODO: 3D bread -->
 <Model3D item="loaf" />

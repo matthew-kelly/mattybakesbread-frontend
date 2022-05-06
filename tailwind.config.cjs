@@ -38,10 +38,14 @@ module.exports = {
         'button-lg': ['28px', '28px'],
         'mobile-nav-logo': ['20px', '16px'],
       },
+      transitionProperty: {
+        size: 'width, height',
+        spacing: 'margin, padding',
+      },
     },
     fontFamily: {
       sans: ['"Work Sans"', 'sans-serif'],
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/forms')],
 };

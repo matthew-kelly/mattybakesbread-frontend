@@ -18,7 +18,7 @@
     }
 
     &.disabled {
-      @apply pointer-events-none text-secondary-dark;
+      @apply pointer-events-none; /* text-secondary-dark; */
     }
   }
 
@@ -61,14 +61,17 @@
     @apply flex flex-col text-xl font-semibold;
   }
 
-  input {
+  input[type='text'],
+  input[type='number'],
+  input[type='email'],
+  input[type='password'] {
     @apply bg-secondary-light border-1 border-secondary-dark shadow-block-2 rounded px-4 py-2 mt-2 text-base mb-5;
   }
 }
 
 @layer components {
   .btn {
-    @apply inline-block px-6 py-3 border-1 rounded-5 bg-primary-light shadow-block-2 font-semibold leading-none text-center text-black;
+    @apply inline-block px-6 py-3 border-1 rounded-5 bg-primary-light shadow-block-2 font-semibold leading-none text-center text-black transition;
     &:hover {
       @apply shadow-none translate-x-[-2px] translate-y-[2px] text-black;
     }
@@ -138,5 +141,10 @@
   }
   .flash > .item {
     @apply bg-secondary-light !important;
+  }
+
+  img.lazyload,
+  img.lazyloading {
+    @apply animate-pulse;
   }
 }

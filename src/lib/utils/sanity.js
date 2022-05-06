@@ -8,3 +8,16 @@ const client = sanityClient({
 });
 
 export default client;
+
+const getProduct = async ({ id = null, slug = null }) => {
+  const query = slug ? `slug.current == "${slug}"` : `_id == "${id}"`;
+  const product = await client.fetch(`*[_type == "product" && ${query}][0]`);
+  return product;
+};
+
+const getProducts = async () => {
+  const products = await client.fetch(`*[_type == "product"]`);
+  return products;
+};
+
+export { getProduct, getProducts };

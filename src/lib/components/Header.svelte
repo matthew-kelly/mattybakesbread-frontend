@@ -2,7 +2,9 @@
   import items from '$lib/utils/menuItems';
   import MobileMenuButton from './MobileMenuButton.svelte';
   import MobileMenu from './MobileMenu.svelte';
+  import CartCount from './CartCount.svelte';
   import { browser } from '$app/env';
+  import MobileCartButton from './MobileCartButton.svelte';
 
   let isOpen;
 
@@ -18,10 +20,13 @@
       {#each items as item}
         <a href={item.path} class="text-h5 lg:text-h4 text-white font-bold mx-4">{item.title}</a>
       {/each}
-      <!-- TODO: live cart count -->
-      <a href="/cart" class="text-h5 lg:text-h4 text-white font-bold mx-4">Cart (0)</a>
+      <a href="/cart" class="text-h5 lg:text-h4 text-white font-bold mx-4">Cart (<CartCount />)</a>
     </div>
-    <MobileMenuButton bind:isOpen />
+
+    <div class="md:hidden flex gap-7 items-center">
+      <MobileCartButton />
+      <MobileMenuButton bind:isOpen />
+    </div>
     {#if isOpen}
       <MobileMenu bind:isOpen />
     {/if}
