@@ -58,7 +58,6 @@
     {/if}
     <div class="flex justify-between items-center mt-4">
       <p class="font-semibold m-0 mr-4">In Stock: {product.stock}</p>
-      <!-- FIXME: verify if rendering bug is dev mode only -->
       {#if isLoading}
         <button class="btn flex justify-between items-center" type="button">
           <Spinner />
