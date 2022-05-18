@@ -52,7 +52,7 @@
     {product.subtitle}
   </p>
   <div class="flex flex-col bg-white p-4 rounded-5 shadow-blur">
-    <img data-src={url} src={lowQuality} alt={product.image.alt} class="aspect-video lazyload" />
+    <img data-src={url} src={lowQuality} alt={product.image.alt} class="aspect-video lazyload rounded-5" />
     {#if product.description}
       <p class="font-semibold my-4">{product.description}</p>
     {/if}

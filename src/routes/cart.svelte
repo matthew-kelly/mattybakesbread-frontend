@@ -29,7 +29,7 @@
               <img
                 src={urlFor(item.image).width(64).height(64).url()}
                 alt={item.image.alt}
-                class="aspect-square mr-2"
+                class="aspect-square mr-2 rounded-5"
               />
               <div class="grow flex justify-between items-center">
                 <p class="m-0 mr-2">

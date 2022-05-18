@@ -97,7 +97,7 @@
   }
 
   .card {
-    @apply shadow-blur p-8 block bg-white md:max-w-sm relative rounded-5;
+    @apply shadow-blur p-8 flex flex-col bg-white relative rounded-5;
   }
 }
 

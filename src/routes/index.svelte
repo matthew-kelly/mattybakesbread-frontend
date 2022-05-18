@@ -1,8 +1,22 @@
-<script>
-  import Model3D from '../lib/components/Model3D.svelte';
+<script context="module">
+  import { getFeatured } from '$lib/utils/sanity';
 
-  export const prerender = true;
+  export async function load() {
+    const featured = await getFeatured();
+    return {
+      props: { featured },
+    };
+  }
+</script>
+
+<script>
+  import Model3D from '$lib/components/Model3D.svelte';
+  import FeaturedCard from '$lib/components/FeaturedCard.svelte';
+
   // TODO: prerender? will that allow cart to update?
+  export const prerender = true;
+
+  export let featured = [];
 </script>
 
 <div class="md:mt-8">
@@ -11,24 +25,21 @@
     <p class="font-semibold text-center md:text-left md:text-xl mb-8 md:mb-7 mx-auto max-w-[335px] md:max-w-none">
       Better than your mom used to make, unless your mom was a really good baker.
     </p>
-    <!-- TODO: decide whether to have buttons or not. Currently same content as cards. -->
     <div class="flex justify-center md:block mx-4">
       <a class="btn md:large black mr-12 md:mr-16" href="/shop">Shop</a>
       <a class="btn md:large black" href="/content">Content</a>
     </div>
 
-    <div class="flex justify-center md:items-start flex-col md:flex-row mt-16 md:mt-32 mb-4 md:mb-0">
-      <div class="card mb-8 md:mb-0 md:mr-16">
-        <p class="text-h3 md:text-h2 font-semibold">Shop</p>
-        <p>Take a look at what's fresh from the oven.</p>
-        <a class="btn md:large" href="/shop">Go</a>
+    {#if featured.length}
+      <h1 class="text-h3 md:text-h1 text-white text-shadow-3 md:text-shadow-5 mt-12 md:mt-24 mb-4 md:mb-6">
+        Featured Product{featured.length > 1 ? 's' : ''}
+      </h1>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16 mb-4 md:mb-0">
+        {#each featured as card}
+          <FeaturedCard {card} />
+        {/each}
       </div>
-      <div class="card">
-        <p class="text-h3 md:text-h2 font-semibold">Content</p>
-        <p>Find out if I've posted another poorly lit picture of a loaf of bread to my Instagram account.</p>
-        <a class="btn md:large" href="/content">Go</a>
-      </div>
-    </div>
+    {/if}
   </div>
 </div>
 
