@@ -1,6 +1,7 @@
 import { browser } from '$app/env';
 import { writable, get } from 'svelte/store';
 import { v4 as uuidv4 } from 'uuid';
+import { getProductsById } from './sanity';
 
 const defaultCart = {
   contents: [],
@@ -65,7 +66,7 @@ const clearCart = () => {
 
 const addToCart = (product) => {
   const currentCart = checkCart();
-  const existing = currentCart.contents.findIndex((item) => item.id === product.id);
+  const existing = currentCart.contents.findIndex((item) => item._id === product._id);
 
   if (existing >= 0) {
     currentCart.contents[existing].quantity += 1;
@@ -79,7 +80,7 @@ const addToCart = (product) => {
 
 const removeFromCart = (product) => {
   const currentCart = checkCart();
-  const existing = currentCart.contents.findIndex((item) => item.id === product.id);
+  const existing = currentCart.contents.findIndex((item) => item._id === product._id);
   if (currentCart.contents[existing].quantity > 1) {
     currentCart.contents[existing].quantity -= 1;
   } else {
@@ -89,8 +90,31 @@ const removeFromCart = (product) => {
   return;
 };
 
+const verifyCartForCheckout = async () => {
+  const currentCart = checkCart();
+  const ids = currentCart.contents.map((item) => item._id);
+  const contents = await getProductsById(ids);
+  const changes = Object.fromEntries(
+    currentCart.contents.map((item) => {
+      return [item._id, { initialQuantity: item.quantity }];
+    })
+  );
+  contents.forEach((item) => {
+    if (item.stock < changes[item._id].initialQuantity) {
+      changes[item._id].newQuantity = item.stock;
+    } else {
+      changes[item._id].newQuantity = changes[item._id].initialQuantity;
+    }
+  });
+  currentCart.contents.forEach((item) => {
+    item.quantity = changes[item._id].newQuantity;
+  });
+  updateCart(currentCart);
+  return;
+};
+
 if (browser) {
   checkCart();
 }
 
-export { cart, addToCart, removeFromCart, clearCart, calculateQuantity };
+export { cart, addToCart, removeFromCart, clearCart, calculateQuantity, verifyCartForCheckout };

@@ -20,9 +20,15 @@ const getProducts = async () => {
   return products;
 };
 
+const getProductsById = async (ids = null) => {
+  if (!ids) return [];
+  const products = await client.fetch('*[_id in $ids]', { ids });
+  return products;
+};
+
 const getFeatured = async () => {
   const featured = await client.fetch(`*[_type == "featured"]{ _id, blurb, product-> }`);
   return featured;
 };
 
-export { getProduct, getProducts, getFeatured };
+export { getProduct, getProducts, getProductsById, getFeatured };

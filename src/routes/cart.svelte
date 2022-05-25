@@ -20,9 +20,9 @@
       <p class="text-gray-400 text-center text-xs grow-0">Swipe to remove item</p>
     {/if}
     <div class="flex flex-col gap-4 grow">
-      {#each $cart.contents as item, index (item.id)}
+      {#each $cart.contents as item, index (item._id)}
         <div animate:flip={{ duration: 200 }}>
-          <CartItem {item} on:drag-delete={() => removeFromCart(index)}>
+          <CartItem {item} on:drag-delete={() => removeFromCart(item)}>
             <div
               class="item flex items-center bg-white pr-1 hover:bg-gray-100 hover:-translate-x-[53px] transition duration-200 ease-in-out md:p-2"
             >
