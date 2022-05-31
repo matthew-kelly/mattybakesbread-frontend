@@ -1,11 +1,10 @@
 import Stripe from 'stripe';
-import 'dotenv/config';
-
-// initialize Stripe
-const stripe = new Stripe(process.env['STRIPE_SECRET_KEY']);
 
 // handle POST /create-payment-intent
 export async function post({ request }) {
+  // initialize Stripe
+  const stripe = new Stripe(import.meta.env.VITE_STRIPE_SECRET_KEY);
+
   const { total } = await request.json();
   const paymentIntent = await stripe.paymentIntents.create({
     amount: total,
