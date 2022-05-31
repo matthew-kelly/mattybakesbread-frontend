@@ -1,7 +1,6 @@
 import { browser } from '$app/env';
 import { writable, get } from 'svelte/store';
 import { v4 as uuidv4 } from 'uuid';
-import { getProductsById } from './sanity';
 
 const defaultCart = {
   contents: [],
@@ -93,19 +92,23 @@ const removeFromCart = (product) => {
 const verifyCartForCheckout = async () => {
   const currentCart = checkCart();
   const ids = currentCart.contents.map((item) => item._id);
-  const contents = await getProductsById(ids);
+  const contents = await fetch('/api/products', { method: 'POST', body: JSON.stringify({ ids: ids }) })
+    .then((res) => res.json())
+    .catch((err) => console.error(err));
   const changes = Object.fromEntries(
     currentCart.contents.map((item) => {
       return [item._id, { initialQuantity: item.quantity }];
     })
   );
-  contents.forEach((item) => {
-    if (item.stock < changes[item._id].initialQuantity) {
-      changes[item._id].newQuantity = item.stock;
-    } else {
-      changes[item._id].newQuantity = changes[item._id].initialQuantity;
-    }
-  });
+  if (contents && contents.length) {
+    contents.forEach((item) => {
+      if (item.stock < changes[item._id].initialQuantity) {
+        changes[item._id].newQuantity = item.stock;
+      } else {
+        changes[item._id].newQuantity = changes[item._id].initialQuantity;
+      }
+    });
+  }
   currentCart.contents.forEach((item) => {
     item.quantity = changes[item._id].newQuantity;
   });

@@ -1,8 +1,8 @@
 <script context="module">
-  import { getFeatured } from '$lib/utils/sanity';
-
-  export async function load() {
-    const featured = await getFeatured();
+  export async function load({ fetch }) {
+    const featured = await fetch('/api/featured')
+      .then((res) => res.json())
+      .catch((err) => console.error(err));
     return {
       props: { featured },
     };
@@ -13,9 +13,7 @@
   import Model3D from '$lib/components/Model3D.svelte';
   import FeaturedCard from '$lib/components/FeaturedCard.svelte';
 
-  // TODO: prerender? will that allow cart to update?
   export const prerender = true;
-
   export let featured = [];
 </script>
 

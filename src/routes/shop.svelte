@@ -1,8 +1,8 @@
 <script context="module">
-  import { getProducts } from '$lib/utils/sanity';
-
-  export async function load() {
-    const data = await getProducts();
+  export async function load({ fetch }) {
+    const data = await fetch('/api/products')
+      .then((res) => res.json())
+      .catch((err) => console.error(err));
     return {
       props: { products: data },
       stuff: { title: 'Shop' },

@@ -1,7 +1,7 @@
 <script>
   import formatMoney from '$lib/helpers/formatMoney';
   import { flip } from 'svelte/animate';
-  import CartItem from '../lib/components/CartItem.svelte';
+  import CartItem from '$lib/components/CartItem.svelte';
   import { cart, removeFromCart } from '$lib/utils/cart';
   import { urlFor } from '$lib/utils/sanityImage';
 </script>
@@ -20,7 +20,7 @@
       <p class="text-gray-400 text-center text-xs grow-0">Swipe to remove item</p>
     {/if}
     <div class="flex flex-col gap-4 grow">
-      {#each $cart.contents as item, index (item._id)}
+      {#each $cart.contents as item (item._id)}
         <div animate:flip={{ duration: 200 }}>
           <CartItem {item} on:drag-delete={() => removeFromCart(item)}>
             <div
@@ -35,7 +35,7 @@
                 <p class="m-0 mr-2">
                   {item.name}
                   {#if item.quantity > 1}
-                    &times;{item.quantity}
+                    <span class="font-semibold">&times;{item.quantity}</span>
                   {/if}
                 </p>
                 <p class="m-0 text-lg font-semibold">{formatMoney(item.price * item.quantity)}</p>

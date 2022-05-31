@@ -1,9 +1,9 @@
 <script context="module">
-  import { getProduct } from '$lib/utils/sanity';
-
-  export async function load({ url, params, props, fetch, session, stuff }) {
+  export async function load({ params, fetch }) {
     try {
-      const product = await getProduct({ slug: params.slug });
+      const product = await fetch('/api/product', { method: 'POST', body: JSON.stringify({ slug: params.slug }) })
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
       return {
         props: {
           product,

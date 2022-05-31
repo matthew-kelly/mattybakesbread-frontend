@@ -63,6 +63,7 @@
 
   input[type='text'],
   input[type='number'],
+  input[type='tel'],
   input[type='email'],
   input[type='password'] {
     @apply bg-secondary-light border-1 border-secondary-dark shadow-block-2 rounded px-4 py-2 mt-2 text-base mb-5;
@@ -146,5 +147,9 @@
   img.lazyload,
   img.lazyloading {
     @apply animate-pulse;
+  }
+
+  .StripeElement {
+    width: 100%;
   }
 }
