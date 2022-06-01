@@ -31,4 +31,9 @@ const getFeatured = async () => {
   return featured;
 };
 
-export { getProduct, getProducts, getProductsById, getFeatured };
+const getContent = async () => {
+  const content = await client.fetch(`*[_type == "content"]`);
+  return content;
+};
+
+export { getProduct, getProducts, getProductsById, getFeatured, getContent };
