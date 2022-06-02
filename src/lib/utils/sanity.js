@@ -36,4 +36,14 @@ const getContent = async () => {
   return content;
 };
 
-export { getProduct, getProducts, getProductsById, getFeatured, getContent };
+const getOrder = async ({ id, email }) => {
+  const order = await client.fetch(
+    `*[_type == "order" && _id == "${id}" && email == "${email}"][0]{ ..., contents[]{..., product->} }`
+  );
+  if (!order) {
+    return null;
+  }
+  return order;
+};
+
+export { getProduct, getProducts, getProductsById, getFeatured, getContent, getOrder };

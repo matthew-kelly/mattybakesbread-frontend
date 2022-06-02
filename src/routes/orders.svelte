@@ -8,70 +8,26 @@
 
 <script>
   import { page } from '$app/stores';
+  import Spinner from '$lib/components/Spinner.svelte';
+  import { urlFor } from '$lib/utils/sanityImage';
+  import formatPhoneNumber from '$lib/helpers/formatPhoneNumber';
   import formatMoney from '$lib/helpers/formatMoney';
 
-  let orderNumber = $page.url.searchParams.get('order');
-  let orderCode = $page.url.searchParams.get('code');
-  console.log({ orderNumber, orderCode });
-
-  // TODO: remove this
-  let orderTemp = {
-    id: 1,
-    code: 'abc123', // code included with email to gate orders page
-    email: 'example@example.com',
-    name: 'John Someone',
-    contents: [
-      // products
-      {
-        id: 1,
-        name: '900g Sourdough Batard',
-        slug: '900g-sourdough-batard',
-        image: {
-          url: 'sample image url', // multiple sizes?
-        },
-        price: 1000, // in cents
-        quantity: 2,
-      },
-      {
-        id: 2,
-        name: 'Pumpkin Loaf',
-        slug: 'pumpkin-loaf',
-        image: {
-          url: 'sample image url', // multiple sizes?
-        },
-        price: 500, // in cents
-        quantity: 1,
-      },
-    ],
-    total: 2500,
-    paid: true, // true, false (false will have empty payment object)
-    payment: {
-      id: 1,
-      method: 'stripe', // stripe, etransfer
-      paymentId: 'asdfasdf1234', // only for stripe payments?
-      amount: 2500,
-    },
-    status: 'complete', // 'pending', 'fulfilling', 'complete', 'cancelled'
-  };
+  let orderCode = $page.url.searchParams.get('order');
+  let orderEmail = $page.url.searchParams.get('email');
 
   let orderResponse;
 
   const fetchOrder = async () => {
-    // TODO: check order number and code in backend, return data or error
-    // const response = await fetch('backend api endpoint')
-    // if (response.status === 200) {
-    //   return await response.json();
-    // } else {
-    //   throw new Error(response.statusText);
-    // }
-    // TODO: remove this
-    const response = new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(orderTemp);
-      }, 100);
-    });
-    console.log(response);
-    return await response;
+    const order = await fetch('/api/order/search', {
+      method: 'POST',
+      body: JSON.stringify({ id: orderCode, email: orderEmail }),
+    })
+      .then((res) => res.json())
+      .catch((err) => {
+        throw new Error('Order not found');
+      });
+    return order;
   };
 
   function handleSubmit() {
@@ -86,53 +42,69 @@
     {#if !orderResponse}
       <div class="mb-2 md:max-w-2xl md:w-full md:mx-auto">
         <label>
-          Order Number
-          <input type="text" name="order-number" placeholder="Your order number" bind:value={orderNumber} />
+          Order Code
+          <input type="text" name="order-code" placeholder="Check your order email" bind:value={orderCode} />
         </label>
 
         <label>
-          Confirmation Code
-          <input type="text" name="text" placeholder="Check your email" bind:value={orderCode} />
+          Email
+          <input type="email" name="email" placeholder="Your email address" bind:value={orderEmail} />
         </label>
 
-        <button class="btn" disabled={!(orderNumber && orderCode)} type="button" on:click={handleSubmit}>
+        <button class="btn" disabled={!(orderCode && orderEmail)} type="button" on:click={handleSubmit}>
           Check Order
         </button>
       </div>
     {/if}
     {#await orderResponse}
-      <!-- TODO: proper loading visual, maybe tailwind animate-spin -->
-      <p>...loading</p>
+      <div class="flex items-center justify-center md:max-w-2xl md:w-full md:mx-auto">
+        <div class="flex mt-4">
+          <Spinner />
+          <p class="font-semibold ml-2">Loading...</p>
+        </div>
+      </div>
     {:then order}
       {#if order}
         <div class="md:max-w-2xl md:w-full md:mx-auto">
-          <h4 class="mb-2">Order #{order.id}</h4>
-          <p class="mb-1"><span class="font-semibold">Ordered By: </span>{order.name}</p>
+          <h4 class="mb-2">Your Order</h4>
+          <p class="mb-1 capitalize"><span class="font-semibold">Order status: </span>{order.status}</p>
+          <p class="mb-1"><span class="font-semibold">Name: </span>{order.firstName} {order.lastName}</p>
+          <p class="mb-1"><span class="font-semibold">Email: </span>{order.email}</p>
+          <p class="mb-1"><span class="font-semibold">Phone: </span>{formatPhoneNumber(order.phoneNumber)}</p>
           <p class="mb-1 mt-4 font-semibold">Items:</p>
-          <div class="flex flex-col gap-2 mb-4">
-            {#each order.contents as item}
+          {#each order.contents as item (item._id)}
+            <div class="item flex items-center bg-white">
+              <img
+                src={urlFor(item.product.image).width(64).height(64).url()}
+                alt={item.product.image.alt}
+                class="aspect-square mr-2 rounded-5"
+              />
               <div class="grow flex justify-between items-center">
                 <p class="m-0 mr-2">
-                  {item.name}
-                  {#if item.quantity > 1}
-                    <span class="font-semibold">&times;{item.quantity}</span>
-                  {/if}
+                  {item.product.name}
+                  <span class="font-semibold">&times;{item.quantity}</span>
                 </p>
-                <p class="m-0 font-semibold">{formatMoney(item.price * item.quantity)}</p>
+                <p class="m-0 font-semibold">{formatMoney(item.product.price * item.quantity)}</p>
               </div>
-            {/each}
-          </div>
-          <p class="mb-1"><span class="font-semibold">Total: </span>{formatMoney(order.total, false)}</p>
-          {#if order.paid}
-            <p class="mb-1 capitalize"><span class="font-semibold">Payment Method: </span>{order.payment.method}</p>
+            </div>
+          {/each}
+          <p class="m-0 mb-4 mt-1 text-lg font-semibold">Total: {formatMoney(order.total, false)}</p>
+
+          {#if order?.payment.method === 'stripe'}
+            <!-- // FIXME: add details for stripe -->
           {:else}
-            <p class="mb-1 font-semibold text-red-600">Unpaid</p>
+            <p class="mb-1"><span class="font-semibold">Payment Method: </span>e-Transfer</p>
+            <p class="mb-1 font-semibold {order.paid ? 'text-green-600' : 'text-red-600'}">
+              {order.paid ? 'Paid' : 'Unpaid'}
+            </p>
           {/if}
-          <p class="mb-1 capitalize"><span class="font-semibold">Status: </span>{order.status}</p>
         </div>
       {/if}
     {:catch error}
-      <p style="color: red">{error.message}</p>
+      <div class="mb-2 md:max-w-2xl md:w-full md:mx-auto text-center">
+        <p class="text-red-600 font-semibold">{error.message}</p>
+        <button type="button" class="btn" on:click={() => (orderResponse = null)}>Back</button>
+      </div>
     {/await}
   </div>
 </div>
