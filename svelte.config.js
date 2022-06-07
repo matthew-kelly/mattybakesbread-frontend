@@ -8,7 +8,7 @@ const config = {
     vite: () => ({
       optimizeDeps: {
         esbuildOptions: {
-          plugins: [esbuildCommonjs(['@sendgrid/mail'])],
+          plugins: [esbuildCommonjs(['@sendgrid'])],
         },
         // exclude: ['path', 'fs', 'os', 'perf_hooks', 'util'],
       },
