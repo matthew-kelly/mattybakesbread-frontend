@@ -3,18 +3,19 @@ import adapter from '@sveltejs/adapter-auto';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-  experimental: {
-    prebundleSvelteLibraries: true,
-  },
+  // experimental: {
+  //   prebundleSvelteLibraries: true,
+  // },
   kit: {
     adapter: adapter(),
     vite: () => ({
-      // optimizeDeps: {
-      //   esbuildOptions: {
-      //     plugins: [esbuildCommonjs(['@sendgrid'])],
-      //   },
-      //   // exclude: ['path', 'fs', 'os', 'perf_hooks', 'util'],
-      // },
+      optimizeDeps: {
+        // esbuildOptions: {
+        //   plugins: [esbuildCommonjs(['@sendgrid'])],
+        // },
+        // exclude: ['path', 'fs', 'os', 'perf_hooks', 'util'],
+        include: ['@sendgrid/mail'],
+      },
       server: {
         fs: {
           allow: ['..'],
