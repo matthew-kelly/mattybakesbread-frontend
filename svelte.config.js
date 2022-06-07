@@ -1,4 +1,5 @@
 import adapter from '@sveltejs/adapter-auto';
+import { esbuildCommonjs } from '@originjs/vite-plugin-commonjs';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -6,7 +7,10 @@ const config = {
     adapter: adapter(),
     vite: () => ({
       optimizeDeps: {
-        exclude: ['path', 'fs', 'os', 'perf_hooks', 'util'],
+        esbuildOptions: {
+          plugins: [esbuildCommonjs(['@sendgrid/mail'])],
+        },
+        // exclude: ['path', 'fs', 'os', 'perf_hooks', 'util'],
       },
       server: {
         fs: {
