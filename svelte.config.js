@@ -8,6 +8,11 @@ const config = {
       optimizeDeps: {
         exclude: ['path', 'fs', 'os', 'perf_hooks', 'util'],
       },
+      server: {
+        fs: {
+          allow: ['..'],
+        },
+      },
     }),
   },
 };
