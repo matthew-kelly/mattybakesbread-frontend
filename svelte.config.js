@@ -13,7 +13,7 @@ const config = {
         // esbuildOptions: {
         //   plugins: [esbuildCommonjs(['@sendgrid'])],
         // },
-        // exclude: ['path', 'fs', 'os', 'perf_hooks', 'util'],
+        exclude: ['path', 'fs', 'os', 'perf_hooks', 'util'],
         include: ['@sendgrid/mail'],
       },
       server: {
