@@ -12,8 +12,8 @@ export async function post({ request }) {
     return {
       body: JSON.stringify(order),
     };
-  } catch (e) {
-    console.log('Error: ', e);
+  } catch (err) {
+    console.error(err);
     return null;
   }
 }

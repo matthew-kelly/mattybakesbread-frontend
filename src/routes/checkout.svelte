@@ -70,10 +70,9 @@
     })
       .then((res) => res.json())
       .catch((err) => console.error(err));
-    console.log({ newOrder });
+
     if (newOrder._id) {
       $order._id = newOrder._id;
-      console.log($order);
       // clientSecret = await createPaymentIntent(); // FIXME: re-enable stripe payments
       stage += 1;
       processing = false;
@@ -137,6 +136,11 @@
         }),
       });
       updatedOrder = await updatedOrder.json();
+      // send order confirmation email
+      fetch('/api/order/sendConfirmationEmail', {
+        method: 'POST',
+        body: JSON.stringify({ order: $order }),
+      });
       await fetch('/api/products', {
         method: 'PUT',
         body: JSON.stringify({

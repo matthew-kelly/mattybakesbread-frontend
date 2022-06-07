@@ -36,10 +36,8 @@ export async function post({ request }) {
 // update remaining stock
 export async function put({ request }) {
   const { contents } = await request.json();
-  console.log('/api/products line 39 res', contents);
   try {
     const products = await updateProductStock(contents);
-    console.log('/api/products line 42 products', products);
     return {
       body: JSON.stringify(products),
     };

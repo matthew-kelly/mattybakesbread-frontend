@@ -84,7 +84,7 @@ const updateProductStock = async (contents) => {
       return res;
     })
     .catch((err) => {
-      console.log('updateProductStock error', err);
+      console.error(err);
       return err;
     });
 
