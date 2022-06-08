@@ -3,7 +3,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'page-background': `url('./static/mattybakesbread_background.svg')`,
+        'page-background': `url('/static/mattybakesbread_background.svg')`,
         'menu-open': `url('./static/hamburger.svg')`,
         'menu-close': `url('./static/times.svg')`,
       },
