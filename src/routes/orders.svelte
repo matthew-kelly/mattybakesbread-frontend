@@ -91,7 +91,11 @@
           <p class="m-0 mb-4 mt-1 text-lg font-semibold">Total: {formatMoney(order.total, false)}</p>
 
           {#if order?.payment.method === 'stripe'}
-            <!-- // FIXME: add details for stripe -->
+            <!-- TODO: add card details for stripe -->
+            <p class="mb-1"><span class="font-semibold">Payment Method: </span>Card</p>
+            <p class="mb-1 font-semibold {order.paid ? 'text-green-600' : 'text-red-600'}">
+              {order.paid ? 'Paid' : 'Unpaid'}
+            </p>
           {:else}
             <p class="mb-1"><span class="font-semibold">Payment Method: </span>e-Transfer</p>
             <p class="mb-1 font-semibold {order.paid ? 'text-green-600' : 'text-red-600'}">

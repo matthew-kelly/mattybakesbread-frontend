@@ -19,8 +19,8 @@
   import { onMount } from 'svelte';
   import { slide } from 'svelte/transition';
   import { goto } from '$app/navigation';
-  // import { loadStripe } from '@stripe/stripe-js';
-  // import { PaymentElement } from 'svelte-stripe';
+  import { loadStripe } from '@stripe/stripe-js';
+  import { PaymentElement } from 'svelte-stripe';
   import { cart, verifyCartForCheckout, clearCart } from '$lib/utils/cart';
   import formatMoney from '$lib/helpers/formatMoney';
   import formatPhoneNumber from '$lib/helpers/formatPhoneNumber';
@@ -33,20 +33,19 @@
 
   let error = null;
   let processing = false;
-  // FIXME: re-enable stripe payments
-  // let stripe = null;
-  // let clientSecret = null;
-  // let elements;
-  // let stripeVariables = {
-  //   colorBackground: '#C5F4E0',
-  //   colorText: '#222222',
-  //   colorDanger: '#df1b41',
-  //   fontFamily: 'Work Sans, sans-serif',
-  //   spacingUnit: '2px',
-  //   borderRadius: '4px',
-  //   spacingGridColumn: '16px',
-  //   spacingGridRow: '20px',
-  // };
+  let stripe = null;
+  let clientSecret = null;
+  let elements;
+  let stripeVariables = {
+    colorBackground: '#C5F4E0',
+    colorText: '#222222',
+    colorDanger: '#df1b41',
+    fontFamily: 'Work Sans, sans-serif',
+    spacingUnit: '2px',
+    borderRadius: '4px',
+    spacingGridColumn: '16px',
+    spacingGridRow: '20px',
+  };
 
   $: verifyInformation =
     $order.firstName &&
@@ -73,7 +72,7 @@
 
     if (newOrder._id) {
       $order._id = newOrder._id;
-      // clientSecret = await createPaymentIntent(); // FIXME: re-enable stripe payments
+      clientSecret = await createPaymentIntent();
       stage += 1;
       processing = false;
     } else {
@@ -91,7 +90,7 @@
     // update cart items to work with available stock
     verifyCartForCheckout();
     // get stripe client
-    // stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY); // FIXME: re-enable stripe payments
+    stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
   });
 
   async function createPaymentIntent() {
@@ -113,13 +112,13 @@
     if (processing) return;
     processing = true;
     let result = { error: false };
-    // if (method === 'stripe') {  // FIXME: re-enable stripe payments
-    //   // confirm payment with stripe
-    //   result = await stripe.confirmPayment({
-    //     elements,
-    //     redirect: 'if_required',
-    //   });
-    // }
+    if (method === 'stripe') {
+      // confirm payment with stripe
+      result = await stripe.confirmPayment({
+        elements,
+        redirect: 'if_required',
+      });
+    }
     if (result.error) {
       // payment failed, notify user
       error = result.error.message;
@@ -281,8 +280,7 @@
             {/if}
           </button>
         </div>
-        <!--  // FIXME: re-enable stripe payments -->
-        <!-- <hr class="my-4 border-primary-light border-2 rounded-5" />
+        <hr class="my-4 border-primary-light border-2 rounded-5" />
         <div>
           <h4 class="mb-4">Credit/Debit</h4>
           <div transition:slide|local>
@@ -314,7 +312,7 @@
               </div>
             {/if}
           </div>
-        </div> -->
+        </div>
       </div>
     {:else if currentStage === 'Complete'}
       <p>Thank you for your order!</p>
