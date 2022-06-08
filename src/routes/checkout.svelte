@@ -140,6 +140,11 @@
         method: 'POST',
         body: JSON.stringify({ order: $order }),
       });
+      // send admin notification email
+      fetch('/api/order/sendAdminEmail', {
+        method: 'POST',
+        body: JSON.stringify({ order: $order, payment: method }),
+      });
       await fetch('/api/products', {
         method: 'PUT',
         body: JSON.stringify({

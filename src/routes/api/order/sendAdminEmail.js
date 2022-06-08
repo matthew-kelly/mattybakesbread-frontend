@@ -1,14 +1,15 @@
 import sgMail from '@sendgrid/mail';
 import formatMoney from '$lib/helpers/formatMoney';
+import formatPhoneNumber from '$lib/helpers/formatPhoneNumber';
 sgMail.setApiKey(import.meta.env.VITE_SENDGRID_API_KEY);
 
 export async function post({ request }) {
-  const { order } = await request.json();
+  const { order, payment } = await request.json();
   const message = {
-    to: `${order.firstName} ${order.lastName} <${order.email}>`,
+    to: `Matty Bakes Bread Admin <${import.meta.env.VITE_ADMIN_EMAIL}>`,
     from: `Matty Bakes Bread <${import.meta.env.VITE_SENDGRID_EMAIL}>`,
-    subject: 'Order Confirmation',
-    html: createEmailHTML(order),
+    subject: 'New Order',
+    html: createEmailHTML(order, payment),
   };
   const email = await sgMail
     .send(message)
@@ -23,7 +24,7 @@ export async function post({ request }) {
   };
 }
 
-function createEmailHTML(order) {
+function createEmailHTML(order, payment) {
   const contents = order.contents
     .map((item) => {
       return `
@@ -150,30 +151,22 @@ table.body .article {
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%">
                     <tr>
                       <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;" valign="top">
-                        <h1 style="color: #000000; font-family: sans-serif; line-height: 1.4; margin: 0; margin-bottom: 16px; font-size: 35px; font-weight: 300; text-align: center; text-transform: capitalize;"><strong>Matty Bakes Bread</strong></h1>
-                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">Hi ${
-                          order.firstName
-                        }, thanks for your order!</p>
-                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">I'll be in touch to organize a time for delivery/pick-up.</p>
-                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; box-sizing: border-box; width: 100%;" width="100%">
-                          <tbody>
-                            <tr>
-                              <td align="left" style="font-family: sans-serif; font-size: 14px; vertical-align: top; padding-bottom: 15px;" valign="top">
-                                <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: auto;">
-                                  <tbody>
-                                    <tr>
-                                      <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border-radius: 5px; text-align: center; background-color: #E8BB93;" valign="top" align="center" bgcolor="#E8BB93"> <a href="https://mattybakesbread.ca/orders?order=${
-                                        order._id
-                                      }&email=${
-    order.email
-  }" target="_blank" style="border: solid 1px #222222; border-radius: 5px; box-sizing: border-box; cursor: pointer; display: inline-block; font-size: 14px; font-weight: bold; margin: 0; padding: 12px 25px; text-decoration: none; background-color: #E8BB93; border-color: #222222; color: #222222;">View your order</a> </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+                        <h1 style="color: #000000; font-family: sans-serif; line-height: 1.4; margin: 0; margin-bottom: 16px; font-size: 35px; font-weight: 300; text-align: center; text-transform: capitalize;"><strong>New Order</strong></h1>
+                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">
+                          ID: ${order._id}
+                        </p>
+                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">
+                          From: ${order.firstName} ${order.lastName}
+                        </p>
+                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">
+                          Email: ${order.email}
+                        </p>
+                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">
+                          Phone: ${formatPhoneNumber(order.phone)}
+                        </p>
+                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">
+                          Address: ${order.address} ${order.address2}, ${order.city}
+                        </p>
                         <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;"><strong>Order summary</strong></p>
                         <ul style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">
                           ${contents}
@@ -181,6 +174,9 @@ table.body .article {
                         <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">Total: ${formatMoney(
                           order.total
                         )}</p>
+                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">
+                          Payment method: ${payment}
+                        </p>
                       </td>
                     </tr>
                   </table>
