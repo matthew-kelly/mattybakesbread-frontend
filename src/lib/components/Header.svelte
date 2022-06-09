@@ -4,6 +4,7 @@
   import MobileMenu from './MobileMenu.svelte';
   import CartCount from './CartCount.svelte';
   import { browser } from '$app/env';
+  import { page } from '$app/stores';
   import MobileCartButton from './MobileCartButton.svelte';
 
   let isOpen;
@@ -12,15 +13,25 @@
 </script>
 
 <header class="z-50">
-  <nav class="flex justify-between items-center bg-black px-8 py-4 md:p-8 md:bg-inherit">
-    <a href="/" class="text-white text-mobile-nav-logo md:text-h2 xl:text-h1 w-20 md:w-auto font-bold mr-14 md:mr-8">
+  <nav class="flex justify-between items-center bg-black px-8 py-4 md:p-8 md:bg-inherit whitespace-nowrap">
+    <a href="/" class="text-white text-mobile-nav-logo md:text-h2 lg:text-h1 w-20 md:w-auto font-bold mr-14 md:mr-4">
       Matty Bakes Bread
     </a>
     <div class="hidden md:flex justify-between items-center">
       {#each items as item}
-        <a href={item.path} class="text-h5 lg:text-h4 text-white font-bold mx-4">{item.title}</a>
+        <a
+          href={item.path}
+          class="{$page.url.pathname === item.path
+            ? 'disabled'
+            : ''} text-h6 lg:text-h4 text-white font-bold mx-2 lg:mx-4">{item.title}</a
+        >
       {/each}
-      <a href="/cart" class="text-h5 lg:text-h4 text-white font-bold mx-4">Cart (<CartCount />)</a>
+      <a
+        href="/cart"
+        class="{$page.url.pathname === '/cart'
+          ? 'disabled'
+          : ''} text-h6 lg:text-h4 text-white font-bold mx-2 lg:mx-4 md:mr-0">Cart (<CartCount />)</a
+      >
     </div>
 
     <div class="md:hidden flex gap-7 items-center">
@@ -32,3 +43,9 @@
     {/if}
   </nav>
 </header>
+
+<style>
+  a.disabled {
+    @apply text-secondary-light;
+  }
+</style>

@@ -1,10 +1,14 @@
 export default [
   {
-    title: "Shop",
-    path: "/shop"
+    title: 'Shop',
+    path: '/shop',
   },
   {
-    title: "Content",
-    path: "/content"
-  }
-]
+    title: 'Content',
+    path: '/content',
+  },
+  {
+    title: 'About',
+    path: '/about',
+  },
+];
