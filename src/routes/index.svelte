@@ -29,10 +29,10 @@
     </div>
 
     {#if featured.length}
-      <h1 class="text-h3 md:text-h1 text-white text-shadow-3 md:text-shadow-5 mt-12 md:mt-24 mb-4 md:mb-6">
+      <!-- <h1 class="text-h3 md:text-h1 text-white text-shadow-3 md:text-shadow-5 mt-12 md:mt-24 mb-4 md:mb-6">
         Featured Product{featured.length > 1 ? 's' : ''}
-      </h1>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16 mb-4 md:mb-0">
+      </h1> -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16 mt-12 mb-4 md:mb-0">
         {#each featured as card}
           <FeaturedCard {card} />
         {/each}

@@ -20,7 +20,7 @@
       width={500}
       height={500}
       alt={card.title}
-      classes="w-full aspect-square lazyload mx-auto rounded-5 shadow-blur"
+      classes="w-full aspect-square lazyload mx-auto rounded-5 shadow-blur hover:shadow-blur-lg transition-shadow"
     >
       <source data-srcset={smallScreen} media="(max-width: {breakpoints.sm}px)" />
       <source data-srcset={largeScreen} media="(min-width: {breakpoints.sm + 1}px)" />

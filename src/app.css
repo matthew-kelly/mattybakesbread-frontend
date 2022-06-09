@@ -98,7 +98,11 @@
   }
 
   .card {
-    @apply shadow-blur p-8 flex flex-col bg-white relative rounded-5;
+    @apply shadow-blur p-8 flex flex-col bg-white relative rounded-5 transition-shadow;
+
+    &:hover {
+      @apply shadow-blur-lg;
+    }
   }
 }
 

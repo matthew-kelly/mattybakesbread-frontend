@@ -13,7 +13,7 @@
 </script>
 
 <header class="z-50">
-  <nav class="flex justify-between items-center bg-black px-8 py-4 md:p-8 md:bg-inherit whitespace-nowrap">
+  <nav class="flex justify-between items-center bg-black px-8 py-4 md:p-8 md:bg-inherit md:whitespace-nowrap">
     <a href="/" class="text-white text-mobile-nav-logo md:text-h2 lg:text-h1 w-20 md:w-auto font-bold mr-14 md:mr-4">
       Matty Bakes Bread
     </a>

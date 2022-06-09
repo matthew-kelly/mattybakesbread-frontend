@@ -60,7 +60,7 @@
       <source data-srcset={largeScreen} media="(min-width: {breakpoints.sm + 1}px)" />
     </Picture>
     {#if product.description}
-      <p class="font-semibold my-4">{product.description}</p>
+      <p class="my-4">{product.description}</p>
     {/if}
     <div class="flex justify-between items-center mt-4">
       <p class="font-semibold m-0 mr-4">In Stock: {product.stock}</p>

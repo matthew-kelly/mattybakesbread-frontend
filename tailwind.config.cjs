@@ -16,6 +16,7 @@ module.exports = {
         'block-3': '-3px 3px 0px #333333',
         'block-5': '-5px 5px 0px #333333',
         blur: '0px 4px 16px rgba(0, 0, 0, 0.2)',
+        'blur-lg': '0px 4px 16px rgba(0, 0, 0, 0.4)',
       },
       colors: {
         'primary-light': '#E8BB93',

@@ -16,7 +16,7 @@ const getProduct = async ({ id = null, slug = null }) => {
 };
 
 const getProducts = async () => {
-  const products = await client.fetch(`*[_type == "product"]`);
+  const products = await client.fetch(`*[_type == "product"] | order(_createdAt desc)`);
   return products;
 };
 
@@ -27,12 +27,14 @@ const getProductsById = async (ids = null) => {
 };
 
 const getFeatured = async () => {
-  const featured = await client.fetch(`*[_type == "featured"]{ _id, blurb, product-> }`);
+  const featured = await client.fetch(
+    `*[_type == "featured"] | order(_createdAt desc)[0..1] | { _id, type, title, link, linkText, blurb, product-> }`
+  );
   return featured;
 };
 
 const getContent = async () => {
-  const content = await client.fetch(`*[_type == "content"]`);
+  const content = await client.fetch(`*[_type == "content"] | order(_createdAt desc)`);
   return content;
 };
 
