@@ -24,12 +24,15 @@
   import { cart, addToCart } from '$lib/utils/cart';
   import formatMoney from '$lib/helpers/formatMoney';
   import Spinner from '$lib/components/Spinner.svelte';
+  import Picture from '$lib/components/Picture.svelte';
+  import { breakpoints } from '$lib/utils/theme';
   import 'lazysizes';
 
   export let product;
   let isLoading = false;
-  const lowQuality = urlFor(product.image).width(112).height(63).fit('max').url();
-  const url = urlFor(product.image).width(928).height(522).fit('max').url();
+
+  let smallScreen = urlFor(product.image).width(500).height(500).url();
+  let largeScreen = urlFor(product.image).width(928).height(522).fit('max').url();
 
   $: cartQuantity = $cart.contents.find((item) => item._id === product._id)?.quantity;
 
@@ -52,7 +55,10 @@
     {product.subtitle}
   </p>
   <div class="flex flex-col bg-white p-4 rounded-5 shadow-blur">
-    <img data-src={url} src={lowQuality} alt={product.image.alt} class="aspect-video lazyload rounded-5" />
+    <Picture width={928} height={522} alt={product.image.alt} classes="w-full md:aspect-video lazyload rounded-5">
+      <source data-srcset={smallScreen} media="(max-width: {breakpoints.sm}px)" />
+      <source data-srcset={largeScreen} media="(min-width: {breakpoints.sm + 1}px)" />
+    </Picture>
     {#if product.description}
       <p class="font-semibold my-4">{product.description}</p>
     {/if}
