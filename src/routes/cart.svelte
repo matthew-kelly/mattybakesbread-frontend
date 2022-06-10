@@ -4,9 +4,6 @@
   import CartItem from '$lib/components/CartItem.svelte';
   import { cart, removeFromCart } from '$lib/utils/cart';
   import { urlFor } from '$lib/utils/sanityImage';
-
-  // FIXME: prevent cart from showing on page transition (pops over everything else)
-  // the issue is the fade on exit, which is being triggered on navigating to another page
 </script>
 
 <div class="flex flex-col">

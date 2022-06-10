@@ -39,7 +39,7 @@
 
 <svelte:window bind:innerWidth={windowWidth} />
 
-<div class="relative cursor-pointer" out:fade={{ duration: 100 }}>
+<div class="relative cursor-pointer" out:fade|local={{ duration: 100 }}>
   <div
     class="relative z-1"
     class:flash={isUpdating}
