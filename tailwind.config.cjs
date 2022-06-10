@@ -4,6 +4,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         'page-background': `url('/static/mattybakesbread_background.svg')`,
+        'page-background-lg': `url('/static/mattybakesbread_background_large.svg')`,
       },
       borderRadius: {
         5: '5px',

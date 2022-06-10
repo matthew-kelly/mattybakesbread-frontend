@@ -5,7 +5,7 @@
   import '../app.css';
 </script>
 
-<div class="min-h-screen flex flex-col bg-page-background overflow-x-clip">
+<div class="min-h-screen flex flex-col bg-page-background-lg overflow-x-clip">
   <Header />
   <div class="body">
     <slot />
@@ -21,5 +21,9 @@
   .bg-page-background {
     background-attachment: fixed;
     background-size: 128px 128px;
+  }
+  .bg-page-background-lg {
+    background-attachment: fixed;
+    background-size: 256px 256px;
   }
 </style>
