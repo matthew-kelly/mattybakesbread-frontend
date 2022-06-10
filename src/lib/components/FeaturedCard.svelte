@@ -17,17 +17,14 @@
 
 <div class="card mb-auto">
   {#if card.type === 'product'}
-    <div class="inline-grid grid-col-1 lg:grid-flow-col gap-4 md:items-center md:mb-4">
-      <Picture
-        width={500}
-        height={500}
-        alt={card.product.image.alt}
-        classes="aspect-square rounded-5 w-auto mx-auto lg:min-w-max"
-      >
-        <source srcset={smallScreen} media="(max-width: {breakpoints.md}px)" />
-        <source srcset={medScreen} media="(max-width: {breakpoints.lg}px)" />
-        <source srcset={largeScreen} media="(min-width: {breakpoints.lg + 1}px)" />
-      </Picture>
+    <div class="flex flex-col md:flex-row gap-4 md:items-center md:mb-4">
+      <div class="grow w-full">
+        <Picture width={500} height={500} alt={card.product.image.alt} classes="aspect-square rounded-5 w-auto mx-auto">
+          <source srcset={smallScreen} media="(max-width: {breakpoints.md}px)" />
+          <source srcset={medScreen} media="(max-width: {breakpoints.lg}px)" />
+          <source srcset={largeScreen} media="(min-width: {breakpoints.lg + 1}px)" />
+        </Picture>
+      </div>
       <p class="text-h4 md:text-h2 font-semibold md:mb-0">{card.product.name}</p>
     </div>
     <p>{card.blurb ? card.blurb : card.product.subtitle}</p>
