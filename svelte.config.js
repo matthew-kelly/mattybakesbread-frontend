@@ -11,9 +11,9 @@ const config = {
           allow: ['..'],
         },
       },
-      ssr: {
-        noExternal: ['three'],
-      },
+      // ssr: {
+      //   noExternal: ['three'],
+      // },
     }),
   },
 };
