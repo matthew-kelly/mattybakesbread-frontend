@@ -1,6 +1,4 @@
 <script context="module">
-  import Picture from '../lib/components/Picture.svelte';
-
   export async function load() {
     return {
       stuff: { title: 'About Matty' },
@@ -8,12 +6,22 @@
   }
 </script>
 
+<script>
+  import Picture from '$lib/components/Picture.svelte';
+  import 'lazysizes';
+</script>
+
 <div>
   <h1 class="text-h3 md:text-h1 md:super text-white text-shadow-3 md:text-shadow-5 mb-2 ml-4 md:ml-8">I'm Matty</h1>
   <p class="font-semibold mb-4 ml-4 md:ml-8">(and that's Darcy)</p>
-  <div class="flex flex-col sm:flex-row gap-4 rounded-5 bg-white p-4">
-    <Picture width={1} height={1} alt="Matty (of Matty Bakes Bread), with his dog Darcy" classes="w-auto rounded-5">
-      <source srcset="/matty.png" />
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 rounded-5 bg-white p-4">
+    <Picture
+      width={480}
+      height={600}
+      alt="Matty (of Matty Bakes Bread), with his dog Darcy"
+      classes="w-auto lazyload rounded-5"
+    >
+      <source data-srcset="/matty.png" />
     </Picture>
     <div class="bio">
       <h2 class="mb-0 text-h3 md:text-h2">Hello friends and family!</h2>
@@ -47,9 +55,3 @@
     </div>
   </div>
 </div>
-
-<!-- <style>
-  .bio p {
-    @apply mb-5;
-  }
-</style> -->

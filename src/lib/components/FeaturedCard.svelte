@@ -17,12 +17,12 @@
 
 <div class="card mb-auto">
   {#if card.type === 'product'}
-    <div class="flex flex-col lg:flex-row gap-4 md:items-center md:mb-4">
+    <div class="inline-grid grid-col-1 lg:grid-flow-col gap-4 md:items-center md:mb-4">
       <Picture
         width={500}
         height={500}
         alt={card.product.image.alt}
-        classes="w-auto lg:max-w-fit aspect-square mx-auto rounded-5"
+        classes="aspect-square rounded-5 w-auto mx-auto lg:min-w-max"
       >
         <source srcset={smallScreen} media="(max-width: {breakpoints.md}px)" />
         <source srcset={medScreen} media="(max-width: {breakpoints.lg}px)" />
