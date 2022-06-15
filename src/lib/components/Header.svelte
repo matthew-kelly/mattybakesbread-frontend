@@ -14,7 +14,10 @@
 
 <header class="z-50">
   <nav class="flex justify-between items-center bg-black px-8 py-4 md:p-8 md:bg-inherit md:whitespace-nowrap">
-    <a href="/" class="text-white text-mobile-nav-logo md:text-h2 lg:text-h1 w-20 md:w-auto font-bold mr-14 md:mr-4">
+    <a
+      href="/"
+      class="text-white text-mobile-nav-logo md:text-h2 md:text-shadow-3 lg:text-h1 w-20 md:w-auto font-bold mr-14 md:mr-4"
+    >
       Matty Bakes Bread
     </a>
     <div class="hidden md:flex justify-between items-center">
@@ -23,14 +26,14 @@
           href={item.path}
           class="{$page.url.pathname === item.path
             ? 'disabled'
-            : ''} text-h6 lg:text-h4 text-white font-bold mx-2 lg:mx-4">{item.title}</a
+            : 'md:text-shadow-2'} text-h6 lg:text-h4 text-white font-bold mx-2 lg:mx-4">{item.title}</a
         >
       {/each}
       <a
         href="/cart"
         class="{$page.url.pathname === '/cart'
           ? 'disabled'
-          : ''} text-h6 lg:text-h4 text-white font-bold mx-2 lg:mx-4 md:mr-0">Cart (<CartCount />)</a
+          : 'md:text-shadow-2'} text-h6 lg:text-h4 text-white font-bold mx-2 lg:mx-4 md:mr-0">Cart (<CartCount />)</a
       >
     </div>
 
@@ -46,6 +49,6 @@
 
 <style>
   a.disabled {
-    @apply text-secondary-light;
+    @apply text-secondary-light translate-y-px;
   }
 </style>
