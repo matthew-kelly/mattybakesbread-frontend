@@ -33,6 +33,8 @@
       : 'bottom-2'}  md:bottom-auto md:right-auto text-xs md:text-base text-right md:text-center"
   >
     👨‍💻 & 🍞🥖🥐 by
-    <a href="https://matthewkelly.ca" target="_blank" rel="external"> Matty </a>
+    <a href="https://github.com/matthew-kelly" target="_blank" rel="external"> Matty </a>
+    <!-- FIXME: restore link to personal site -->
+    <!-- <a href="https://matthewkelly.ca" target="_blank" rel="external"> Matty </a> -->
   </span>
 </footer>

@@ -84,7 +84,7 @@
         }
       },
       (xhr) => {
-        console.log('loading...', xhr);
+        // console.log('loading...', xhr);
         isLoading = false;
       },
       (error) => {
