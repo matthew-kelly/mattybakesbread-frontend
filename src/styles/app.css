@@ -157,3 +157,20 @@
     width: 100%;
   }
 }
+
+/* AOS */
+[data-aos^='fade'][data-aos^='fade'] {
+  opacity: 0;
+  transition-property: opacity, -webkit-transform;
+  transition-property: opacity, transform;
+  transition-property: opacity, transform, -webkit-transform;
+}
+html:not(.no-js) [data-aos^='fade'][data-aos^='fade'].aos-animate {
+  opacity: 1;
+  -webkit-transform: none;
+  transform: none;
+}
+html:not(.no-js) [data-aos='fade-up'] {
+  -webkit-transform: translate3d(0, 100px, 0);
+  transform: translate3d(0, 100px, 0);
+}

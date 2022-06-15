@@ -13,7 +13,7 @@
   let largeScreen = urlFor(product.image).width(350).height(350).url();
 </script>
 
-<div class="card w-full p-0 flex flex-col">
+<div class="card w-full p-0 flex flex-col" data-aos="fade-up">
   <a href="/shop/{product.slug.current}" class="contents">
     <Picture width={500} height={500} alt={product.image.alt} classes="w-full aspect-square lazyload rounded-t-5">
       <source data-srcset={smallScreen} media="(max-width: {breakpoints.sm}px)" />

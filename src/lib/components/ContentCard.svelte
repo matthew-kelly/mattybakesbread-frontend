@@ -15,7 +15,7 @@
 </script>
 
 {#if smallScreen && largeScreen}
-  <a href={card.link} target="_blank">
+  <a href={card.link} target="_blank" data-aos="fade-up">
     <Picture
       width={500}
       height={500}
@@ -27,7 +27,7 @@
     </Picture>
   </a>
 {:else}
-  <div class="card">
+  <div class="card" data-aos="fade-up">
     <div class="flex flex-col md:items-center grow">
       <p class="text-h4 md:text-h5 lg:text-h4 font-semibold mb-4 md:mb-2 lg:mb-4">{card.title}</p>
       <p class="mb-4 md:mb-2 lg:mb-4">{card.description}</p>

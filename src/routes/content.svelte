@@ -25,7 +25,7 @@
       <ContentCard card={item} />
     {/each}
   </div>
-  <div class="flex">
+  <div class="flex" data-aos="fade-up">
     <a
       href="https://www.instagram.com/mattybakesbread/"
       target="_blank"

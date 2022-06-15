@@ -35,6 +35,7 @@
     "@sanity/client": "^3.3.0",
     "@sanity/image-url": "^1.0.1",
     "@sendgrid/mail": "^7.7.0",
+    "aos": "^2.3.4",
     "lazysizes": "^5.3.2",
     "uuid": "^8.3.2"
   }
