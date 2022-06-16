@@ -15,13 +15,10 @@
   <h1 class="text-h3 md:text-h1 md:super text-white text-shadow-3 md:text-shadow-5 mb-2 ml-4 md:ml-8">I'm Matty</h1>
   <p class="font-semibold mb-4 ml-4 md:ml-8">(and that's Darcy)</p>
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 rounded-5 bg-white p-4">
-    <Picture
-      width={480}
-      height={600}
-      alt="Matty (of Matty Bakes Bread), with his dog Darcy"
-      classes="w-auto lazyload rounded-5"
-    >
-      <source data-srcset="/matty.png" />
+    <Picture width={480} height={600} alt="Matty (of Matty Bakes Bread), with his dog Darcy" classes="w-auto rounded-5">
+      <source srcset="/matty.avif" type="image/avif" />
+      <source srcset="/matty.webp" type="image/webp" />
+      <source srcset="/matty.png" />
     </Picture>
     <div class="bio">
       <h2 class="mb-0 text-h3 md:text-h2">Hello friends and family!</h2>
