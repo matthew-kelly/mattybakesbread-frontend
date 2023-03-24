@@ -30,7 +30,7 @@
 
 <div>
 	<h1 class="text-h3 md:text-h1 md:super text-white text-shadow-3 md:text-shadow-5 mb-2 ml-4 md:ml-8">Orders</h1>
-	<p class="font-semibold mb-4 ml-4 md:ml-8">Check the status of your order.</p>
+	<p class="font-semibold mb-4 ml-4 md:ml-8 text-h6">Check the status of your order.</p>
 	<div class="bg-white p-4 md:py-16 grid grid-cols-1 gap-4 items-center justify-center shadow-blur rounded-5">
 		{#if !orderResponse}
 			<div class="mb-2 md:max-w-2xl md:w-full md:mx-auto">

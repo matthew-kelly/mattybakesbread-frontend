@@ -36,7 +36,7 @@ module.exports = {
 				h4: ['1.5rem', '2rem'],
 				h5: ['1.25rem', '1.5rem'],
 				h6: ['1.1rem', '1.3rem'],
-				'button-lg': ['28px', '28px'],
+				'button-lg': ['26px', '28px'],
 				'mobile-nav-logo': ['20px', '16px'],
 			},
 			transitionProperty: {
@@ -45,7 +45,7 @@ module.exports = {
 			},
 		},
 		fontFamily: {
-			sans: ['"Work SansVariable"', 'sans-serif'],
+			sans: ['"Basier Circle"', 'sans-serif'],
 			display: ['Chaney', 'sans-serif'],
 		},
 	},

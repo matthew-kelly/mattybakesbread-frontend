@@ -48,12 +48,12 @@
 					<source srcset={largeScreen} media="(min-width: {breakpoints.lg + 1}px)" />
 				</Picture>
 			</div>
-			<p class="text-h4 md:text-h2 font-semibold md:mb-0">{card.product.name}</p>
+			<p class="font-display text-h4 md:text-h3 md:mb-0">{card.product.name}</p>
 		</div>
 		<p>{card.blurb ? card.blurb : card.product.subtitle}</p>
 		<a class="btn md:large self-center justify-self-end" href="/shop/{card.product.slug.current}">Go</a>
 	{:else}
-		<p class="text-h4 md:text-h2 font-semibold md:mb-4">{card.title}</p>
+		<p class="text-h4 md:text-h3 font-display md:mb-4">{card.title}</p>
 		<p>{card.blurb}</p>
 		<a class="btn md:large self-center justify-self-end" href={card.link}>{card.linkText}</a>
 	{/if}

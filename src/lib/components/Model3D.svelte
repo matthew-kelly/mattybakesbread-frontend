@@ -23,18 +23,18 @@
 			offset: 0.09,
 			scale: 1,
 		},
-		// {
-		// 	name: 'croissant',
-		// 	model: modelCroissant,
-		// 	offset: 0.15,
-		// 	scale: 1.2,
-		// 	quaternion: {
-		// 		x: 0.1,
-		// 		y: 0,
-		// 		z: 0,
-		// 		w: 1,
-		// 	},
-		// },
+		{
+			name: 'croissant',
+			model: modelCroissant,
+			offset: 0.15,
+			scale: 1.2,
+			quaternion: {
+				x: 0.1,
+				y: 0,
+				z: 0,
+				w: 1,
+			},
+		},
 		{
 			name: 'donutSprinkles',
 			model: modelDonutSprinkles,

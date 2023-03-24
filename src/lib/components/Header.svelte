@@ -30,14 +30,15 @@
 					href={item.path}
 					class="{$page.url.pathname === item.path
 						? 'disabled'
-						: 'md:text-shadow-2'} text-h6 lg:text-h4 text-white font-bold mx-2 lg:mx-4">{item.title}</a
+						: 'md:text-shadow-2'} text-h5 lg:text-h4 text-white font-normal font-display mx-4 lg:mx-4">{item.title}</a
 				>
 			{/each}
 			<a
 				href="/cart"
 				class="{$page.url.pathname === '/cart'
 					? 'disabled'
-					: 'md:text-shadow-2'} text-h6 lg:text-h4 text-white font-bold mx-2 lg:mx-4 md:mr-0">Cart (<CartCount />)</a
+					: 'md:text-shadow-2'} text-h5 lg:text-h4 text-white font-normal font-display mx-2 lg:mx-4 md:mr-0"
+				>Cart (<CartCount />)</a
 			>
 		</div>
 

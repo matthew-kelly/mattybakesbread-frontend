@@ -1,7 +1,6 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@fontsource/work-sans': ^4.5.14
   '@sanity/client': ^5.2.2
   '@sanity/image-url': ^1.0.2
   '@sendgrid/mail': ^7.7.0
@@ -35,7 +34,6 @@ specifiers:
   vite: ^4.0.0
 
 dependencies:
-  '@fontsource/work-sans': 4.5.14
   '@sanity/client': 5.2.2
   '@sanity/image-url': 1.0.2
   '@sendgrid/mail': 7.7.0
@@ -291,10 +289,6 @@ packages:
     resolution: {integrity: sha512-JXdzbRiWclLVoD8sNUjR443VVlYqiYmDVT6rGUEIEHU5YJW0gaVZwV2xgM7D4arkvASqD0IlLUVjHiFuxaftRw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
-
-  /@fontsource/work-sans/4.5.14:
-    resolution: {integrity: sha512-AFBSDBA3hnSCXHwb52qBOMEGqF5nfdbANp+y5/hbE1PMjYfFY0lUdtUwL5J7mRAdyn1NJwobJlhduHtlAyPzmA==}
-    dev: false
 
   /@humanwhocodes/config-array/0.11.8:
     resolution: {integrity: sha512-UybHIJzJnR5Qc/MsD9Kr+RpO2h+/P1GhOwdiLPXK5TWk5sgTdu88bTD9UP+CKbPPh5Rni1u0GjAdYQLemG8g+g==}

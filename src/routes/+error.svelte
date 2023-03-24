@@ -12,12 +12,12 @@
 
 	<div class="flex justify-center md:items-start flex-col md:flex-row mt:4 md:mt-16 mb-4 md:mb-0">
 		<div class="card mb-8 md:mb-0 md:mr-16">
-			<p class="text-h3 md:text-h2 font-semibold">Shop</p>
+			<p class="text-h3 font-normal font-display">Shop</p>
 			<p>Take a look at what's fresh from the oven.</p>
 			<a class="btn md:large" href="/shop">Go</a>
 		</div>
 		<div class="card md:max-w-sm">
-			<p class="text-h3 md:text-h2 font-semibold">Content</p>
+			<p class="text-h3 font-normal font-display">Content</p>
 			<p>Find out if I've posted another poorly lit picture of a loaf of bread to my Instagram account.</p>
 			<a class="btn md:large" href="/content">Go</a>
 		</div>

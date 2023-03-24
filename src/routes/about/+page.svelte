@@ -4,14 +4,14 @@
 	import mattyWebp from '$lib/assets/matty.webp';
 	import mattyPng from '$lib/assets/matty.png';
 	// import 'lazysizes';
-	import { lazyload } from '$lib/utils/lazyload.js';
+	// import { lazyload } from '$lib/utils/lazyload.js';
 	// FIXME: replace lazysizes with custom loader
 	// https://svelte.dev/repl/adb8dc564044415f8ffbbd240a39d68d?version=3.44.2
 </script>
 
 <div>
 	<h1 class="text-h3 md:text-h1 md:super text-white text-shadow-3 md:text-shadow-5 mb-2 ml-4 md:ml-8">I'm Matty</h1>
-	<p class="font-semibold mb-4 ml-4 md:ml-8">(and that's Darcy)</p>
+	<p class="font-semibold mb-4 ml-4 md:ml-8 text-h6">(and that's Darcy)</p>
 	<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 rounded-5 bg-white p-4">
 		<Picture width={480} height={600} alt="Matty (of Matty Bakes Bread), with his dog Darcy" classes="w-auto rounded-5">
 			<source srcset={mattyAvif} type="image/avif" />
@@ -22,10 +22,10 @@
 			<h2 class="mb-0 text-h3 md:text-h2">Hello friends and family!</h2>
 			<p class="text-base font-bold">(and random people online)</p>
 			<p>
-				Like literally everyone else during the pandemic, I got into sourdough in April 2020 when my neighbour gave me a
-				piece of her starter.
+				Like literally everyone else during the pandemic, I got into sourdough in April 2020 when my neighbour gave me
+				some of her starter.
 			</p>
-			<p>I've been baking all my life, but since that point, I've really fallen in love with bread.</p>
+			<p>I've been baking all my life, but since then, I've really fallen in love with bread.</p>
 			<p>
 				<span class="font-semibold">Matty Bakes Bread</span> started as a way for me to combine two of my passions — making
 				delicious food and sitting on my ass in front of the computer.

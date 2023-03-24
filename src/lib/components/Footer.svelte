@@ -1,7 +1,9 @@
 <script>
 	import { onMount } from 'svelte';
+	import LogoInitials from './LogoInitials.svelte';
 
 	let os;
+	let width;
 
 	const getMobileOS = () => {
 		const ua = navigator.userAgent;
@@ -18,13 +20,17 @@
 	});
 </script>
 
+<svelte:window bind:innerWidth={width} />
+
 <footer class="relative flex flex-col items-center p-4 md:py-8 md:px-16 bg-white">
-	<div class="flex justify-between items-center w-full md:mb-1 {os === 'iOS' ? 'pb-8' : ''}">
-		<a class="text-mobile-nav-logo md:text-button-lg font-semibold my-3 w-20 md:w-auto" href="/"> Matty Bakes Bread </a>
-		<div class="flex justify-between">
-			<a class="mx-3 md:mx-8" href="/shop">Shop</a>
-			<a class="mx-3 md:mx-8" href="/content">Content</a>
-			<a class="mx-3 md:ml-8" href="/orders">Orders</a>
+	<div class="flex justify-between items-center w-full mb-4 md:mb-1 {os === 'iOS' ? 'pb-8' : ''}">
+		<a href="/">
+			<LogoInitials height={width > 768 ? 96 : 64} />
+		</a>
+		<div class="flex justify-between font-display">
+			<a class="mx-2 md:mx-6 font-normal" href="/shop">Shop</a>
+			<a class="mx-2 md:mx-6 font-normal" href="/content">Content</a>
+			<a class="mx-2 md:ml-6 font-normal" href="/orders">Orders</a>
 		</div>
 	</div>
 	<span

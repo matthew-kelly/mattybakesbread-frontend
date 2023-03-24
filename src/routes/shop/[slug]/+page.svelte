@@ -31,7 +31,7 @@
 	<h1 class="text-h3 md:text-h1 md:super text-white text-shadow-3 md:text-shadow-5 mb-2 ml-4 md:ml-8">
 		{product.name}
 	</h1>
-	<p class="font-semibold mb-4 ml-4 md:ml-8">
+	<p class="font-semibold mb-4 ml-4 md:ml-8 text-h6">
 		{product.subtitle}
 	</p>
 	<div class="flex flex-col bg-white p-4 rounded-5 shadow-blur">

@@ -15,7 +15,7 @@
 	}
 
 	let cardRef;
-	const THRESHOLD = 5;
+	const THRESHOLD = 3;
 	const handleHover = (e) => {
 		if ($reducedMotion) return;
 
@@ -60,7 +60,7 @@
 {:else}
 	<div class="card" data-aos="fade-up" bind:this={cardRef} on:mousemove={handleHover} on:mouseleave={resetStyles}>
 		<div class="flex flex-col md:items-center grow">
-			<p class="text-h4 md:text-h5 lg:text-h4 font-semibold mb-4 md:mb-2 lg:mb-4">{card.title}</p>
+			<p class="text-h4 md:text-h5 lg:text-h4 font-display font-semibold mb-4 md:mb-2 lg:mb-4">{card.title}</p>
 			<p class="mb-4 md:mb-2 lg:mb-4">{card.description}</p>
 		</div>
 		{#if card.link}

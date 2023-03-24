@@ -14,7 +14,7 @@
 	let largeScreen = urlFor(product.image).width(350).height(350).url();
 
 	let cardRef;
-	const THRESHOLD = 5;
+	const THRESHOLD = 3;
 	const handleHover = (e) => {
 		if ($reducedMotion) return;
 
@@ -48,7 +48,7 @@
 			<source data-srcset={largeScreen} media="(min-width: {breakpoints.sm + 1}px)" />
 		</Picture>
 		<div class="flex justify-between items-center p-4 flex-grow card-content">
-			<p class="font-semibold m-0 mr-4 w-full text-center">{product.name}</p>
+			<p class="font-normal font-display m-0 mr-4 w-full text-center">{product.name}</p>
 			<a href="/shop/{product.slug.current}">
 				<button class="btn {disabled ? 'black whitespace-nowrap px-3' : ''}" {disabled}>
 					{disabled ? 'Sold out' : formatMoney(product.price)}
