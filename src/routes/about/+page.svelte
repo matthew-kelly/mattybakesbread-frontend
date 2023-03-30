@@ -20,6 +20,7 @@
 			height={600}
 			blur={mattyBase64}
 			alt="Matty (of Matty Bakes Bread), with his dog Darcy"
+			classesPicture="flex flex-col w-full"
 			classes="w-auto rounded-5 lazyload"
 		>
 			<!-- <source data-srcset={mattyAvif} type="image/avif" /> -->
