@@ -100,7 +100,6 @@
 	};
 </script>
 
-<!-- // FIXME: check how this works on real mobile device, can switch to mousemove if need to disable on mobile -->
 <svelte:window bind:innerWidth={width} on:pointermove={updateCoords} />
 
 <GLTF

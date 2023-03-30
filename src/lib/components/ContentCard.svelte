@@ -11,11 +11,11 @@
 	let largeScreen = null;
 	if (card.type === 'image') {
 		smallScreen = urlFor(card.image).width(500).height(500).url();
-		largeScreen = urlFor(card.image).width(350).height(350).url();
+		largeScreen = urlFor(card.image).width(500).height(500).url();
 	}
 
 	let cardRef;
-	const THRESHOLD = 3;
+	const THRESHOLD = 2;
 	const handleHover = (e) => {
 		if ($reducedMotion) return;
 
@@ -50,7 +50,8 @@
 		<Picture
 			width={500}
 			height={500}
-			alt={card.title}
+			blur={card.blur}
+			alt={card.title || 'instagram link'}
 			classes="w-full aspect-square lazyload mx-auto rounded-5 shadow-blur hover:shadow-blur-lg transition-shadow"
 		>
 			<source data-srcset={smallScreen} media="(max-width: {breakpoints.sm}px)" />

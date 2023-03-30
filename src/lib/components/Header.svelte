@@ -21,6 +21,7 @@
 		<a
 			href="/"
 			class="text-white text-mobile-nav-logo md:text-h2 md:text-shadow-3 lg:text-h1 w-20 md:w-auto font-bold mr-14 md:mr-4"
+			title="Matty Bakes Bread"
 		>
 			<Logo height={width > 768 ? 96 : 64} fill="white" shadow={width > 768 ? true : false} />
 		</a>
@@ -29,8 +30,9 @@
 				<a
 					href={item.path}
 					class="{$page.url.pathname === item.path
-						? 'disabled'
-						: 'md:text-shadow-2'} text-h5 lg:text-h4 text-white font-normal font-display mx-4 lg:mx-4">{item.title}</a
+						? 'disabled outline-none'
+						: 'md:text-shadow-2'} text-h5 lg:text-h4 text-white font-normal font-display mx-4 lg:mx-4"
+					tabindex={$page.url.pathname === item.path ? '-1' : '0'}>{item.title}</a
 				>
 			{/each}
 			<a

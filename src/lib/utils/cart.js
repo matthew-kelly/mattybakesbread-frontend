@@ -34,10 +34,10 @@ const checkCart = () => {
 	if (browser) {
 		sessionCart = JSON.parse(sessionStorage.getItem('cart'));
 	}
-	if (localCart?.id) {
+	if (localCart?.id && localCart.contents.length > 0 && localCart.total > 0) {
 		updateCart(localCart);
 		return localCart;
-	} else if (sessionCart?.id) {
+	} else if (sessionCart?.id && sessionCart.contents.length > 0 && sessionCart.total > 0) {
 		updateCart(sessionCart);
 		return sessionCart;
 	} else {

@@ -1,22 +1,30 @@
 <script>
 	import Picture from '$lib/components/Picture.svelte';
-	import mattyAvif from '$lib/assets/matty.avif';
+	// import mattyAvif from '$lib/assets/matty.avif';
 	import mattyWebp from '$lib/assets/matty.webp';
 	import mattyPng from '$lib/assets/matty.png';
-	// import 'lazysizes';
+
+	import 'lazysizes';
 	// import { lazyload } from '$lib/utils/lazyload.js';
-	// FIXME: replace lazysizes with custom loader
-	// https://svelte.dev/repl/adb8dc564044415f8ffbbd240a39d68d?version=3.44.2
+
+	const mattyBase64 =
+		'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAOCAMAAAAhfX2ZAAABAlBMVEXW1NfQ0dezsLXRtZ6blJYCAADJyM6vqqzSrpWWkZLJqZCOiYzAoos6NTfm5ujCw8q2tLimoKKznYyNhYaIgoS6nIKNgoKEe3umi3mzk3itjnOoem1uaWuYdl9nYFhlMSwnICAUCxL6+vzp6u3Ny9C/vcHjxq+/sa+1r665rKfbvqbCsqbVuqOcmZ3Jr5yvopuUmZixnJbKrJTMno2bkIy+mYqcj4m8k4G2jX62iHp8dXaSfnKYfHGqi2+bfmWmgmSdfWSFbl2AZ12adVmMY1l/YVhTTEyEZEp+U0p0WkhHQ0dTTUWLZEFUKiFpIx4CFx0eFBgmFhdbFw5sLABOBQBGBACsq8FMAAAAkElEQVQI1wXBgwHDAAAEwI9dx65t2zb2X6V3iEfI8+vBMGGIJNL011eU4Akpgrd//wV7BXSm9dneNIdhQLLDkb0jiJqEJtexj2sWBAHPmw7cUy4ajWF1MXj1migVOfRjhZ64WcqJCcCSQp2SzZmBLBmXKnlKtExwgpBqVClKtUCP9VS3zLfnB9COntREXnYXf2leEOO1xU1EAAAAAElFTkSuQmCC';
 </script>
 
 <div>
 	<h1 class="text-h3 md:text-h1 md:super text-white text-shadow-3 md:text-shadow-5 mb-2 ml-4 md:ml-8">I'm Matty</h1>
 	<p class="font-semibold mb-4 ml-4 md:ml-8 text-h6">(and that's Darcy)</p>
 	<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 rounded-5 bg-white p-4">
-		<Picture width={480} height={600} alt="Matty (of Matty Bakes Bread), with his dog Darcy" classes="w-auto rounded-5">
-			<source srcset={mattyAvif} type="image/avif" />
-			<source srcset={mattyWebp} type="image/webp" />
-			<source srcset={mattyPng} />
+		<Picture
+			width={480}
+			height={600}
+			blur={mattyBase64}
+			alt="Matty (of Matty Bakes Bread), with his dog Darcy"
+			classes="w-auto rounded-5 lazyload"
+		>
+			<!-- <source data-srcset={mattyAvif} type="image/avif" /> -->
+			<source data-srcset={mattyWebp} type="image/webp" />
+			<source data-srcset={mattyPng} />
 		</Picture>
 		<div class="bio">
 			<h2 class="mb-0 text-h3 md:text-h2">Hello friends and family!</h2>

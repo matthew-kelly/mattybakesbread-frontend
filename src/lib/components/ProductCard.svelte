@@ -11,10 +11,10 @@
 	$: disabled = product.stock === 0;
 
 	let smallScreen = urlFor(product.image).width(500).height(500).url();
-	let largeScreen = urlFor(product.image).width(350).height(350).url();
+	let largeScreen = urlFor(product.image).width(500).height(500).url();
 
 	let cardRef;
-	const THRESHOLD = 3;
+	const THRESHOLD = 2;
 	const handleHover = (e) => {
 		if ($reducedMotion) return;
 
@@ -35,15 +35,15 @@
 	};
 </script>
 
-<div
-	class="card w-full p-0 flex flex-col"
-	data-aos="fade-up"
-	bind:this={cardRef}
-	on:mousemove={handleHover}
-	on:mouseleave={resetStyles}
->
-	<a href="/shop/{product.slug.current}" class="contents">
-		<Picture width={500} height={500} alt={product.image.alt} classes="w-full aspect-square lazyload rounded-t-5">
+<div class="card w-full p-0 flex flex-col" bind:this={cardRef} on:mousemove={handleHover} on:mouseleave={resetStyles}>
+	<a href="/shop/{product.slug.current}" class="contents" alt={product.name} focusable="true">
+		<Picture
+			width={500}
+			height={500}
+			blur={product.blur}
+			alt={product.image.alt}
+			classes="w-full aspect-square lazyload rounded-t-5"
+		>
 			<source data-srcset={smallScreen} media="(max-width: {breakpoints.sm}px)" />
 			<source data-srcset={largeScreen} media="(min-width: {breakpoints.sm + 1}px)" />
 		</Picture>

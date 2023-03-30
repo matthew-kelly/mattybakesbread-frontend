@@ -4,6 +4,7 @@
 	import CartItem from '$lib/components/CartItem.svelte';
 	import { cart, removeFromCart } from '$lib/utils/cart';
 	import { urlFor } from '$lib/utils/sanityImage';
+	import Picture from '../../lib/components/Picture.svelte';
 </script>
 
 <div class="flex flex-col">
@@ -24,11 +25,15 @@
 						<div
 							class="item flex items-center bg-white pr-1 hover:bg-gray-100 hover:-translate-x-[53px] transition duration-200 ease-in-out md:p-2"
 						>
-							<img
-								src={urlFor(item.image).width(64).height(64).url()}
+							<Picture
+								width={64}
+								height={64}
+								blur={item.blur}
 								alt={item.image.alt}
-								class="aspect-square mr-2 rounded-5"
-							/>
+								classes="aspect-square mr-2 rounded-5"
+							>
+								<source srcset={urlFor(item.image).width(64).height(64).url()} />
+							</Picture>
 							<div class="grow flex justify-between items-center">
 								<p class="m-0 mr-2">
 									{item.name}

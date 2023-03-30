@@ -42,7 +42,13 @@
 	{#if card.type === 'product'}
 		<div class="flex flex-col md:flex-row gap-4 md:items-center md:mb-4">
 			<div class="grow w-full">
-				<Picture width={500} height={500} alt={card.product.image.alt} classes="aspect-square rounded-5 w-auto mx-auto">
+				<Picture
+					width={500}
+					height={500}
+					blur={card.product.blur}
+					alt={card.product.image.alt}
+					classes="aspect-square rounded-5 w-auto mx-auto"
+				>
 					<source srcset={smallScreen} media="(max-width: {breakpoints.md}px)" />
 					<source srcset={medScreen} media="(max-width: {breakpoints.lg}px)" />
 					<source srcset={largeScreen} media="(min-width: {breakpoints.lg + 1}px)" />

@@ -1,9 +1,6 @@
 <script>
 	import ContentCard from '$lib/components/ContentCard.svelte';
-	import 'lazysizes';
-	// FIXME: replace lazysizes
 
-	// export let content = [];
 	export let data;
 </script>
 

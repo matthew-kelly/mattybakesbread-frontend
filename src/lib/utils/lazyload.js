@@ -1,3 +1,5 @@
+// TODO: replace lazysizes with custom loader
+// https://svelte.dev/repl/adb8dc564044415f8ffbbd240a39d68d?version=3.44.2
 // See how the options work here: https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
 let options = {
 	root: null,

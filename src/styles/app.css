@@ -109,7 +109,7 @@
 	input[type='tel'],
 	input[type='email'],
 	input[type='password'] {
-		@apply bg-secondary-light border-1 border-secondary-dark shadow-block-2 rounded px-4 py-2 mt-2 text-base mb-5;
+		@apply bg-white border-1 focus:outline-dashed focus:outline-secondary-dark shadow-block-2 rounded px-4 py-2 mt-2 text-base mb-5;
 	}
 }
 
@@ -146,7 +146,7 @@
 		transform-style: preserve-3d;
 
 		&:hover {
-			/* @apply shadow-blur-lg; */
+			@apply shadow-blur-lg;
 		}
 	}
 }

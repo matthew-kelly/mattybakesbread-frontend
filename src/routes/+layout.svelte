@@ -10,7 +10,7 @@
 	import bgImageLg from '$lib/assets/mattybakesbread_background_large.svg';
 
 	onMount(() => {
-		// FIXME: get rid of AOS?
+		// TODO: get rid of AOS?
 		// options: https://github.com/michalsnik/aos#1-initialize-aos
 		AOS.init({
 			duration: 300,
@@ -26,9 +26,9 @@
 	style="background-image: url({bgImageLg})"
 >
 	<Header />
-	<div class="body">
+	<main class="body">
 		<slot />
-	</div>
+	</main>
 	<Footer />
 </div>
 
