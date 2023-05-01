@@ -47,6 +47,11 @@
 		font-display: block;
 	}
 
+	html,
+	body {
+		@apply bg-primary-light;
+	}
+
 	* {
 		@apply text-black border-black z-0;
 	}
