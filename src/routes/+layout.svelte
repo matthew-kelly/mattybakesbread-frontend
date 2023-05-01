@@ -22,7 +22,7 @@
 </script>
 
 <div
-	class="min-h-screen flex flex-col bg-page-background-lg overflow-x-clip"
+	class="min-h-screen h-full flex flex-col bg-page-background-lg overflow-x-clip"
 	style="background-image: url({bgImageLg})"
 >
 	<Header />
