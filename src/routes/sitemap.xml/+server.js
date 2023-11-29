@@ -3,7 +3,7 @@ import { getProductsForSitemap } from '$lib/helpers/getProductsForSitemap';
 const website = 'https://mattybakesbread.ca';
 
 export async function GET() {
-	const pages = ['shop', 'content', 'about', 'cart', 'checkout', 'orders'];
+	const pages = ['shop', 'content', 'about', 'orders']; // 'cart', 'checkout'
 	const products = await getProductsForSitemap();
 	const body = sitemap(products, pages);
 

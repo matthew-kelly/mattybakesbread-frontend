@@ -5,5 +5,7 @@ export async function load({ fetch }) {
 	return {
 		products: data,
 		title: 'Shop',
+		description:
+			'Order sourdough bread and other baked goods from the online bakery by Matty. Serving Vancouver and the Sunshine Coast since 2020.',
 	};
 }

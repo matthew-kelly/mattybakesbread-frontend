@@ -9,6 +9,7 @@ export async function load({ params, fetch }) {
 		return {
 			product,
 			title: product.name,
+			description: `${product.name}, made just for you by Matty. ${product.description}`,
 		};
 	} catch (e) {
 		throw error(404, 'Product not found');

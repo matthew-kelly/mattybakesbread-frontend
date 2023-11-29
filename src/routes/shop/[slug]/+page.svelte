@@ -75,7 +75,7 @@
 			<source srcset={smallScreen} media="(max-width: {breakpoints.md - 1}px)" />
 			<source srcset={largeScreen} media="(min-width: {breakpoints.md}px)" />
 		</Picture>
-		<div class="flex flex-col gap-4">
+		<div class="flex flex-col gap-4 {display !== 'horizontal' ? 'justify-between' : ''}">
 			{#if product.description}
 				<p class="mb-0">{product.description}</p>
 			{/if}

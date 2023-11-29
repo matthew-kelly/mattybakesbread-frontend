@@ -34,6 +34,14 @@
 
 <svelte:head>
 	<title>{$page.data.title ? `${$page.data.title} | Matty Bakes Bread` : 'Matty Bakes Bread'}</title>
+	{#if $page.data.description}
+		<meta name="description" content={$page.data.description} />
+	{:else}
+		<meta
+			name="description"
+			content="An online bakery by Matty. Serving Vancouver and the Sunshine Coast since 2020."
+		/>
+	{/if}
 </svelte:head>
 
 <style>

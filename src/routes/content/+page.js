@@ -5,5 +5,7 @@ export async function load({ fetch }) {
 	return {
 		content,
 		title: 'Content',
+		description:
+			'Matty loves posting pictures of his sourdough bread on on Instagram @mattybakesbread, no matter how unflattering the lighting or camera angle.',
 	};
 }
