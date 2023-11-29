@@ -1,7 +1,7 @@
 <script>
 	import { spring } from 'svelte/motion';
-	import { OrbitControls, T, useFrame } from '@threlte/core';
-	import { GLTF } from '@threlte/extras';
+	import { T, useFrame } from '@threlte/core';
+	import { useGltf } from '@threlte/extras';
 	import modelCake from '$lib/assets/models/cake.glb';
 	import modelCakeBirthday from '$lib/assets/models/cakeBirthday.glb';
 	import modelCroissant from '$lib/assets/models/croissant.glb';
@@ -9,7 +9,6 @@
 	import modelLoaf from '$lib/assets/models/loaf.glb';
 	import modelPie from '$lib/assets/models/pie.glb';
 	import modelPizza from '$lib/assets/models/pizza.glb';
-
 	const models = [
 		{
 			name: 'cake',
@@ -82,8 +81,8 @@
 
 	const item = models[Math.floor(Math.random() * models.length)];
 	// const item = models.find((item) => item.name === 'loaf');
+	const model = useGltf(item.model);
 
-	let gltfRef;
 	let width;
 	let rotation = 0;
 	let rotationSpeed = 0.01;
@@ -102,22 +101,26 @@
 
 <svelte:window bind:innerWidth={width} on:pointermove={updateCoords} />
 
-<GLTF
-	bind:gltfRef
-	url={item.model}
-	scale={item.scale}
-	rotation={{
-		x: ($coords.x - width / 2) / -4000,
-		y: rotation + $coords.y / 500,
-		z: itemRotationZ,
-	}}
-	position={{ y: item.offset }}
-/>
+{#if $model}
+	<T.PerspectiveCamera
+		makeDefault
+		position={[2, 1, -1]}
+		on:create={({ ref }) => {
+			ref.lookAt(0, 0, 0);
+		}}
+	/>
 
-<T.PerspectiveCamera makeDefault position={[2, 1, -1]} fov={50}>
-	<OrbitControls target={gltfRef} enabled={false} />
-</T.PerspectiveCamera>
+	<T
+		ref={model}
+		is={$model.scene}
+		scale={item.scale}
+		rotation={[($coords.x - width / 2) / -4000, rotation + $coords.y / 500, itemRotationZ]}
+		position={[0, item.offset, 0]}
+	/>
 
-<T.DirectionalLight intensity={0.3} position={[5, 3, -6]} />
-<T.DirectionalLight intensity={0.75} position={[7, 3, -7]} />
-<T.PointLight intensity={2.8} position={[10, 5, -7]} />
+	<T.DirectionalLight intensity={0.3} position={[5, 3, -6]} />
+	<T.DirectionalLight intensity={0.75} position={[7, 3, -7]} />
+	<T.PointLight intensity={2.8} position={[10, 5, -7]} />
+
+	<!-- multiply intensity by Math.PI when moving away from legacyLights -->
+{/if}

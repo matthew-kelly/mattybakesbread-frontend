@@ -10,7 +10,9 @@
 </script>
 
 <div class="canvas-container md:desktop transition-opacity duration-1000 {isLoading ? 'opacity-0' : 'opacity-100'}">
-	<Canvas linear flat>
+	<!-- <Canvas toneMapping={0} colorSpace="srgb-linear" colorManagementEnabled={false} > -->
+	<!-- when they remove legacy lights you're fucked matty -->
+	<Canvas useLegacyLights={true} colorSpace="srgb-linear" toneMapping={0}>
 		<Model3D />
 	</Canvas>
 </div>
