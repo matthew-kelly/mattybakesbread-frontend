@@ -39,8 +39,13 @@
 	{:else}
 		<meta
 			name="description"
-			content="An online bakery by Matty. Serving Vancouver and the Sunshine Coast since 2020."
+			content="An online bakery by Matty. Serving fresh sourdough bread and other baked goods to Vancouver and the Sunshine Coast since 2020."
 		/>
+	{/if}
+	{#if $page.data.structuredData}
+		{@html `<script key="structured-data" type="application/ld+json">${JSON.stringify(
+			$page.data.structuredData
+		)}</script>`}
 	{/if}
 </svelte:head>
 

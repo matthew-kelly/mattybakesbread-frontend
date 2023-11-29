@@ -12,6 +12,7 @@ const config = {
 	preprocess: sequence([
 		vitePreprocess(),
 		preprocess({
+			preserve: ['ld+json'],
 			postcss: true,
 		}),
 	]),
